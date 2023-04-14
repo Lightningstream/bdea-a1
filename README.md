@@ -3,9 +3,9 @@
 Beispiel:
 ```
 docker-compose build --progess=plain
-docker exec -it {container-name-mongo-db} bash
-mongoimport --username root --authenticationDatabase admin --db test --collection video_games --file video_games.json --jsonArray
-## Danach Passwort für die Datenbank eingeben
+docker-compose up -d
+docker exec -it bdea-mongo-amazon - bash
+mongoimport --username root --password example --authenticationDatabase admin --db test --collection video_games --file video_games.json --jsonArray
 ```
 Zeppelin interpreter für mongo db einrichten:
 ```

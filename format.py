@@ -1,5 +1,5 @@
 import sys
-newFile = open("video_game_data.json", "w")
+newFile = open("video_games.json", "w")
 count = 0
 with open('./Video_Games_5.json') as file:
     for line in file:

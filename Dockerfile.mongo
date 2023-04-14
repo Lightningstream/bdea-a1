@@ -1,0 +1,12 @@
+FROM mongo
+USER root
+RUN apt-get -y update
+RUN apt-get install -y python3
+RUN apt-get install -y wget
+COPY ./format.py ./format.py
+COPY ./video_games.json ./video_games.json
+RUN wget https://jmcauley.ucsd.edu/data/amazon_v2/categoryFilesSmall/Video_Games_5.json.gz --no-check-certificate
+RUN gzip -d Video_Games_5.json.gz
+RUN python3 ./format.py 
+RUN rm -f Video_Games.json.gz
+RUN rm -f Video_Games.json

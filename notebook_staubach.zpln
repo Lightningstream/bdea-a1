@@ -1,57 +1,10 @@
 ﻿{
   "paragraphs": [
     {
-      "text": "%sh \n/wget https://fastdl.mongodb.org/tools/db/mongodb-database-tools-amazon2-aarch64-100.7.0.tgz\n\ncd ./mongodb-database-tools-amazon2-aarch64-100.7.0 && cp * /usr/local/bin/*\n mongoimport\n//wget https://jmcauley.ucsd.edu/data/amazon_v2/categoryFiles/AMAZON_FASHION.json.gz --no-check-certificate -q\nexit\ngunzip ./AMAZON_FASHION.json.gz -d ./AMAZON_FASHION.json\ninput=\"./AMAZON_FASHION.json\"\nwhile IFS= read -r line\ndo\n  echo \"$line\"\ndone < \"$input\"",
-      "user": "anonymous",
-      "dateUpdated": "2023-04-10T18:37:37+0000",
-      "progress": 0,
-      "config": {
-        "editorSetting": {
-          "language": "sh",
-          "editOnDblClick": false,
-          "completionKey": "TAB",
-          "completionSupport": false
-        },
-        "colWidth": 12,
-        "editorMode": "ace/mode/sh",
-        "fontSize": 9,
-        "results": {},
-        "enabled": true
-      },
-      "settings": {
-        "params": {},
-        "forms": {}
-      },
-      "apps": [],
-      "runtimeInfos": {},
-      "progressUpdateIntervalMs": 500,
-      "jobName": "paragraph_1681150146893_346230970",
-      "id": "paragraph_1681150146893_346230970",
-      "dateCreated": "2023-04-10T18:09:06+0000",
-      "dateStarted": "2023-04-10T18:37:37+0000",
-      "dateFinished": "2023-04-10T18:37:37+0000",
-      "status": "ERROR",
-      "focus": true,
-      "$$hashKey": "object:186",
-      "results": {
-        "code": "ERROR",
-        "msg": [
-          {
-            "type": "TEXT",
-            "data": "bash: /wget: No such file or directory\ncp: target '/usr/local/bin/zeppelin-web-angular-0.10.1.war' is not a directory\nbash: line 3: mongoimport: command not found\nbash: line 4: //wget: No such file or directory\n"
-          },
-          {
-            "type": "TEXT",
-            "data": "ExitValue: 127"
-          }
-        ]
-      }
-    },
-    {
       "title": "Einleitung",
-      "text": "// mongoimport --username root --authenticationDatabase admin --db test --collection video_games --file video_games.json --jsonArray\n\n\n\n// Tabelle mit allen Bewertungen # \n// Die 5 best beweresteten Spiele, 5 schlecht bewertesten Spiele (als Graph) #\n// Die Anzahl an Bewertungen pro Spiel #\n// Die Anzahl verifzierter Bewertungen (Annahme vielleicht gibt es viele schlechte bewertungen die nicht verifiziert sind) #\n// DIe hilfreichste Bewertung?\n// der Nutzer mit den meisten Rezensionen -> welche Spiele findet er am besten, welche am schlechtesten # \n// Wie lang sind Rezensionen in der Regel, wenn sie schlecht oder gut sind? -> Sind hilfreiche Rezensionen länger? -> wann hat er am häufigsten Rezensionen verfasst?\n// Aus welchem Jahr kommen die meisten Rezensionen (werden es mehr oder weniger) #\n// Unterschiedliche Nuternamen\nprint(`%html\n    <h1>Interaktive Datenanalyse: Amazon Video Games</h1>\n    <h2>Joel Staubach - 1820560</h2>\n    <h3>Einleitung</h3>\n    <p>In diesem Notebook werden...</p>\n    <h3>Installation</h3>\n    \n\n`)\n",
+      "text": "%mongodb\nprint(`%html\n    <h3>Achtung: Dieses Notebook lässt sich ohne Anbindung an die Datenbank verwenden. Sollte die Notwendigkeit zum lokalen Ausführen der Paragraphen bestehen, schauen sie bitte in die beigelegte PDF-Datei.</h3>\n    <h3>Einleitung</h3>\n    <p>In diesem Tutorial wird eine Analyse mit Hilfe des Apache Zepplin Notebooks von 497577 Amazon Rezensionen aus der Kategorie \"Video Games\" durchgeführt. Der Datensatz wurde von <a href='https://cseweb.ucsd.edu//~jmcauley/pdfs/emnlp19a.pdf'>Jianmo Ni, Jiacheng Li und Julian McAuley</a> aus der University of California, San Diego bereitgestellt. Die Rezensionen beinhalten nur Aritkel die mindestens 5 mal bewertet sowie Rezensionen von Rezensenten die mindestens 5 Rezensionen geschrieben haben. Aufgrund der begrenzten Lesedauer für diese Analyse wird nicht auf alle Attribute des Datensatzes eingangen.</p>\n    <p> Die folgenden Attribute werden verwendet:</p>\n    <ul>\n        <li>reviewerID: ID eines Rezensenten, z. B. A29BEQWCWCCUTI</li>\n        <li>asin: Die Id eines Artikels, z. B. B00178630A</li>\n        <li>reviewerName: Name eines Rezensenten, z. B. Chris</li>\n        <li>reviewText: Der Text des Rezensenten</li>\n        <li>overall: Die Bewertung des Artikels</li>\n        <li>verified: Ist die Rezension von Amazon verifiziert</li>\n        <li>unixReviewTime: Datum, an dem die Rezension verfasst wurde (Unix Zeit)</li>\n    </ul>\n    <p>\n        In Kapitel 1 werden zuerst die Rezensionen im allgemeinen analyisiert so wie ihre Historie beleuchtet. In Kapitel 2 werden die bewerteten Artikel untersucht und in Kapitel 3 auf die Nutzernamen und deren Benutzer eingegangen. Jedes Kapitel beschreibt die gezeigte Visualisierung und fasst die wichtigsten Informationen zusammen.\n    </p>\n    <p>\n        Für die Analyse wird eine Mongo-Datenbank verwendet. Damit die Analyse frei von konkreter Implementierung bleibt, wird die Implementierung der Abfragen über Kommentare im Code erklärt (Die entsprechendne Paragraphen aufklappen). Die Kommentare erklären die Funktionsweise der einzelnen Abfrage jedoch nicht wie die einzelnen JavasScript-Funktionen definiert sind. Print-Anweisungen werden nicht erklärt, da diese nur für das Anzeigen der Informationen da sind. Ein Basiswissen für Abfragen an der MongoDB wird vorrausgesetzt.\n    </p>\n    \n\n`)\n",
       "user": "anonymous",
-      "dateUpdated": "2023-04-10T18:09:06+0000",
+      "dateUpdated": "2023-04-15T12:44:15+0000",
       "progress": 0,
       "config": {
         "editorSetting": {
@@ -62,6 +15,8 @@
         "colWidth": 12,
         "editorMode": "ace/mode/javascript",
         "fontSize": 9,
+        "editorHide": true,
+        "title": false,
         "results": {
           "0": {
             "graph": {
@@ -71,44 +26,44 @@
             }
           }
         },
-        "enabled": true,
-        "title": false,
-        "editorHide": false
+        "enabled": true
       },
       "settings": {
         "params": {},
         "forms": {}
       },
       "results": {
-        "code": "ERROR",
+        "code": "SUCCESS",
         "msg": [
           {
-            "type": "TEXT",
-            "data": "SyntaxError: Missing semicolon. (146:3)\n\n  144 | `)\n  145 |\n> 146 | %sh wget bank.csv   https://s3.amazonaws.com/apache-zeppelin/tutorial/bank/bank.csv\n      |    ^\nExitValue: 1"
+            "type": "HTML",
+            "data": "    <h3>Achtung: Dieses Notebook lässt sich ohne Anbindung an die Datenbank verwenden. Sollte die Notwendigkeit zum lokalen Ausführen der Paragraphen bestehen, schauen sie bitte in die beigelegte PDF-Datei.</h3>\n    <h3>Einleitung</h3>\n    <p>In diesem Tutorial wird eine Analyse mit Hilfe des Apache Zepplin Notebooks von 497577 Amazon Rezensionen aus der Kategorie \"Video Games\" durchgeführt. Der Datensatz wurde von <a href='https://cseweb.ucsd.edu//~jmcauley/pdfs/emnlp19a.pdf'>Jianmo Ni, Jiacheng Li und Julian McAuley</a> aus der University of California, San Diego bereitgestellt. Die Rezensionen beinhalten nur Aritkel die mindestens 5 mal bewertet sowie Rezensionen von Rezensenten die mindestens 5 Rezensionen geschrieben haben. Aufgrund der begrenzten Lesedauer für diese Analyse wird nicht auf alle Attribute des Datensatzes eingangen.</p>\n    <p> Die folgenden Attribute werden verwendet:</p>\n    <ul>\n        <li>reviewerID: ID eines Rezensenten, z. B. A29BEQWCWCCUTI</li>\n        <li>asin: Die Id eines Artikels, z. B. B00178630A</li>\n        <li>reviewerName: Name eines Rezensenten, z. B. Chris</li>\n        <li>reviewText: Der Text des Rezensenten</li>\n        <li>overall: Die Bewertung des Artikels</li>\n        <li>verified: Ist die Rezension von Amazon verifiziert</li>\n        <li>unixReviewTime: Datum, an dem die Rezension verfasst wurde (Unix Zeit)</li>\n    </ul>\n    <p>\n        In Kapitel 1 werden zuerst die Rezensionen im allgemeinen analyisiert so wie ihre Historie beleuchtet. In Kapitel 2 werden die bewerteten Artikel untersucht und in Kapitel 3 auf die Nutzernamen und deren Benutzer eingegangen. Jedes Kapitel beschreibt die gezeigte Visualisierung und fasst die wichtigsten Informationen zusammen.\n    </p>\n    <p>\n        Für die Analyse wird eine Mongo-Datenbank verwendet. Damit die Analyse frei von konkreter Implementierung bleibt, wird die Implementierung der Abfragen über Kommentare im Code erklärt (Die entsprechendne Paragraphen aufklappen). Die Kommentare erklären die Funktionsweise der einzelnen Abfrage jedoch nicht wie die einzelnen JavasScript-Funktionen definiert sind. Print-Anweisungen werden nicht erklärt, da diese nur für das Anzeigen der Informationen da sind. Ein Basiswissen für Abfragen an der MongoDB wird vorrausgesetzt.\n    </p>\n    \n\n\n"
           }
         ]
       },
       "apps": [],
       "runtimeInfos": {},
       "progressUpdateIntervalMs": 500,
-      "jobName": "paragraph_1680944373532_1846642588",
+      "jobName": "paragraph_1681562648464_1285648646",
       "id": "paragraph_1680944373532_1846642588",
-      "dateCreated": "2023-04-08T08:59:33+0000",
-      "dateStarted": "2023-04-10T16:37:06+0000",
-      "dateFinished": "2023-04-10T16:37:07+0000",
-      "status": "ERROR",
-      "$$hashKey": "object:187"
+      "dateCreated": "2023-04-15T12:44:08+0000",
+      "status": "FINISHED",
+      "focus": true,
+      "$$hashKey": "object:5060",
+      "dateFinished": "2023-04-15T12:44:18+0000",
+      "dateStarted": "2023-04-15T12:44:15+0000"
     },
     {
-      "text": "print(`%html \n    <h3>1. Analyse der Rezensionen</h3>\n`)\n",
+      "text": "%mongodb\nprint(`%html <h3>1. Analyse der Rezensionen</h3>`)",
       "user": "anonymous",
-      "dateUpdated": "2023-04-10T15:50:16+0000",
+      "dateUpdated": "2023-04-15T12:44:18+0000",
       "progress": 0,
       "config": {
         "editorSetting": {
           "language": "javascript",
           "editOnDblClick": false,
-          "completionKey": "TAB"
+          "completionKey": "TAB",
+          "completionSupport": true
         },
         "colWidth": 12,
         "editorMode": "ace/mode/javascript",
@@ -126,38 +81,39 @@
         "msg": [
           {
             "type": "HTML",
-            "data": "\n    <h3>1. Analyse der Rezensionen</h3>\n\n"
+            "data": "<h3>1. Analyse der Rezensionen</h3>\n"
           }
         ]
       },
       "apps": [],
       "runtimeInfos": {},
       "progressUpdateIntervalMs": 500,
-      "jobName": "paragraph_1681141761932_1801791849",
-      "id": "paragraph_1681141761932_1801791849",
-      "dateCreated": "2023-04-10T15:49:21+0000",
-      "dateStarted": "2023-04-10T15:50:14+0000",
-      "dateFinished": "2023-04-10T15:50:15+0000",
+      "jobName": "paragraph_1681562648464_1765570733",
+      "id": "paragraph_1681499436903_622648251",
+      "dateCreated": "2023-04-15T12:44:08+0000",
       "status": "FINISHED",
-      "$$hashKey": "object:188"
+      "$$hashKey": "object:5061",
+      "dateFinished": "2023-04-15T12:44:19+0000",
+      "dateStarted": "2023-04-15T12:44:18+0000"
     },
     {
       "title": "1.1 Metadaten der Sammlung",
-      "text": "/**\n * - Wie viele Rezensionen hat der Datensatz\n * - Wie viele Spiele wurden bewertet?\n * - Wie viele unterschiedliche Personen haben bewertet?\n * - An wie vielen Tagen wurde bewertet?\n **/\nconst collection = db.getCollection('video_games');\n\nconst group = collection.aggregate([\n        {\n            $group: {\n                _id: null,\n                reviews: {$count: {}},\n                games: {$addToSet: '$asin'},\n                reviewers: {$addToSet: '$reviewerID'},\n                reviewerNames: {$addToSet: {$toLower: \"$reviewerName\"}},   \n                days: {$addToSet: '$unixReviewTime'},    \n            },\n        },\n        {\n            $project: {\n                _id: 0,\n                reviews: '$reviews',\n                gameAmount: {$size: '$games'},\n                reviewerAmount: {$size: '$reviewers'},\n                dayAmount: {$size: '$days'},\n                reviewerNameAmount: {$size: '$reviewerNames'}\n            }\n        }\n        \n    ])\n    \nprint(`%html \n    <h4>1.1 Metadaten der Sammlung</h4>\n    <p>Um einen groben Einblick in den Datensatz zu erhalten lohnt es sich, einige Metadaten zu extrahieren</p>\n    <ul>\n        <li>Wie viele Rezensionen\n        </li>\n    </ul>\n`)\n\nprint(\"%table Art\\tAnzahl\")\ngroup.forEach((reviewGroup) => {\n    print(\"Rezensionen\\t\" + reviewGroup.reviews);\n    print(\"Bewertete Videospielartikel\\t\" + reviewGroup.gameAmount);\n    print(\"Rezensenten\\t\" + reviewGroup.reviewerAmount);\n    print(\"Verwendete Nutzernamen\\t\" + reviewGroup.reviewerNameAmount);\n    print(\"Tage an Bewertungen\\t\" + reviewGroup.dayAmount);\n    print(\"Durschnittliche Anzahl Rezension/Rezensent\\t\" + Math.floor(reviewGroup.reviews/reviewGroup.reviewerAmount))\n})",
+      "text": "%mongodb\n// Verwende die Collection video_games\nconst collection = db.getCollection('video_games');\n\n/** Zähle alle Reviews, Spiele (asin), Rezensenten(reviewerID), Nutzernamen(reviewerName) und Tage(unixReviewTime) die nur einmalig vorkommen (addToSet ermöglicht das Speicheren einzigartiger Werte in einem Set)\n */\nconst group = collection.aggregate([\n        {\n            $group: {\n                _id: null,\n                reviews: {$count: {}},\n                games: {$addToSet: '$asin'},\n                reviewers: {$addToSet: '$reviewerID'},\n                reviewerNames: {$addToSet: {$toLower: \"$reviewerName\"}},   \n            },\n        },\n        {\n            $project: {\n                _id: 0,\n                reviews: '$reviews',\n                gameAmount: {$size: '$games'},\n                reviewerAmount: {$size: '$reviewers'},\n                reviewerNameAmount: {$size: '$reviewerNames'}\n            }\n        }\n        \n    ])\n    \nprint(`%html \n    <p>Um einen Einblick in den Datensatz zu erhalten lohnt es sich, einige Metadaten zu extrahieren.</p>\n    <p> Der Datensatz beseht aus 497577 Rezensionen und 17408 bewerteten Videospielartikeln.\n    <p> 55223 Rezensenten haben Bewertungen hinterlassen. Dies ergibt 9 Rezensionen pro Rezesent im Durchschnitt.\n        </p> Es gibt 44917 Nutzernamen. Dies lässt darauf schließen, dass mehrere Benutzer den gleichen Nutzernamen haben.</p>\n    </ul>\n`)\n\nprint(\"%table Art\\tAnzahl\")\ngroup.forEach((reviewGroup) => {\n    print(\"Rezensionen\\t\" + reviewGroup.reviews);\n    print(\"Bewertete Videospielartikel\\t\" + reviewGroup.gameAmount);\n    print(\"Durchschnitt Rezension/Rezensent\\t\" + Math.floor(reviewGroup.reviews/reviewGroup.reviewerAmount))\n    print(\"Rezensenten\\t\" + reviewGroup.reviewerAmount);\n    print(\"Verwendete Nutzernamen\\t\" + reviewGroup.reviewerNameAmount);\n})",
       "user": "anonymous",
-      "dateUpdated": "2023-04-10T15:50:29+0000",
+      "dateUpdated": "2023-04-15T12:44:21+0000",
       "progress": 0,
       "config": {
         "editorSetting": {
           "language": "javascript",
           "editOnDblClick": false,
-          "completionKey": "TAB"
+          "completionKey": "TAB",
+          "completionSupport": true
         },
         "colWidth": 4,
         "editorMode": "ace/mode/javascript",
         "fontSize": 9,
         "editorHide": true,
-        "title": false,
+        "title": true,
         "results": {
           "0": {
             "graph": {
@@ -253,7 +209,7 @@
           "1": {
             "graph": {
               "mode": "table",
-              "height": 180,
+              "height": 232,
               "optionOpen": false,
               "setting": {
                 "table": {
@@ -290,45 +246,49 @@
         "msg": [
           {
             "type": "HTML",
-            "data": "\n    <h4>1.1 Metadaten der Sammlung</h4>\n    <p>Um einen groben Einblick in den Datensatz zu erhalten lohnt es sich, einige Metadaten zu extrahieren</p>\n    <ul>\n        <li>Wie viele Rezensionen\n        </li>\n    </ul>\n\n"
+            "data": "\n    <p>Um einen Einblick in den Datensatz zu erhalten lohnt es sich, einige Metadaten zu extrahieren.</p>\n    <p> Der Datensatz beseht aus 497577 Rezensionen und 17408 bewerteten Videospielartikeln.\n    <p> 55223 Rezensenten haben Bewertungen hinterlassen. Dies ergibt 9 Rezensionen pro Rezesent im Durchschnitt.\n        </p> Es gibt 44917 Nutzernamen. Dies lässt darauf schließen, dass mehrere Benutzer den gleichen Nutzernamen haben.</p>\n    </ul>\n\n"
           },
           {
             "type": "TABLE",
-            "data": "Art\tAnzahl\nRezensionen\t497577\nBewertete Videospielartikel\t17408\nRezensenten\t55223\nVerwendete Nutzernamen\t44917\nTage an Bewertungen\t6847\nDurschnittliche Anzahl Rezension/Rezensent\t9\n"
+            "data": "Art\tAnzahl\nRezensionen\t497577\nBewertete Videospielartikel\t17408\nDurchschnitt Rezension/Rezensent\t9\nRezensenten\t55223\nVerwendete Nutzernamen\t44917\n"
           }
         ]
       },
       "apps": [],
       "runtimeInfos": {},
       "progressUpdateIntervalMs": 500,
-      "jobName": "paragraph_1681036872455_1376410431",
+      "jobName": "paragraph_1681562648464_238618277",
       "id": "paragraph_1681036872455_1376410431",
-      "dateCreated": "2023-04-09T10:41:12+0000",
-      "dateStarted": "2023-04-10T15:50:26+0000",
-      "dateFinished": "2023-04-10T15:50:28+0000",
+      "dateCreated": "2023-04-15T12:44:08+0000",
       "status": "FINISHED",
-      "$$hashKey": "object:189"
+      "$$hashKey": "object:5062",
+      "dateFinished": "2023-04-15T12:44:21+0000",
+      "dateStarted": "2023-04-15T12:44:19+0000"
     },
     {
       "title": "1.2 Anteil verifizierter Rezensionen",
-      "text": "/**\n * - Wie viele Rezensionen wurden von Amazon verifizieret und wie viele nicht?\n **/\n//Wir holen die Colleciton aus der importieren Datenbank 'video_games'\nconst collection = db.getCollection('video_games');\n\nconst unverifiedReviews = collection.countDocuments({ verified: false});\nconst verifiedReviews = collection.countDocuments({ verified: true});\n\nprint(\"%table Typ\\tAnzahl\")\nprint(\"Verifizierte Rezensionen\\t\" + verifiedReviews);\nprint(\"Unverifizierte Rezensionen\\t\" + unverifiedReviews);\n\n\n",
+      "text": "%mongodb\n// Verwende die Collection video_games\nconst collection = db.getCollection('video_games');\n\n// Zähle die Anzahl verifizierter und unverifizierter Rezensionen\nconst unverifiedReviews = collection.countDocuments({ verified: false});\nconst verifiedReviews = collection.countDocuments({ verified: true});\n\nprint(`%html\n    <p>Um zu verstehen, wie viele Rezensionen verifiziert sind, werden die verifizierten Reviews aus dem Datensatz gezählt. Anhand des Tortendiagramms lässt sich erkennen, dass 67 % (332645) der Rezensionen von Amazon verifiziert wurden und die restlichen 33 % (164932) nicht. Der Anteil an potenziell \"glaubwürdigen\" Rezensionen ist somit höher.\n    </p>\n`)\nprint(\"%table Typ\\tAnzahl\")\nprint(\"Verifizierte Rezensionen\\t\" + verifiedReviews);\nprint(\"Unverifizierte Rezensionen\\t\" + unverifiedReviews);\n\n\n",
       "user": "anonymous",
-      "dateUpdated": "2023-04-10T15:46:35+0000",
+      "dateUpdated": "2023-04-15T12:44:21+0000",
       "progress": 0,
       "config": {
+        "lineNumbers": false,
         "editorSetting": {
           "language": "javascript",
           "editOnDblClick": false,
-          "completionKey": "TAB"
+          "completionKey": "TAB",
+          "completionSupport": true
         },
         "colWidth": 4,
         "editorMode": "ace/mode/javascript",
         "fontSize": 9,
+        "editorHide": true,
+        "title": true,
         "results": {
           "0": {
             "graph": {
               "mode": "pieChart",
-              "height": 299.094,
+              "height": 59,
               "optionOpen": false,
               "setting": {
                 "table": {
@@ -426,9 +386,9 @@
           },
           "1": {
             "graph": {
-              "mode": "table",
-              "height": 300,
-              "optionOpen": true,
+              "mode": "pieChart",
+              "height": 322,
+              "optionOpen": false,
               "setting": {
                 "table": {
                   "tableGridState": {
@@ -534,8 +494,8 @@
               "groups": [],
               "values": [
                 {
-                  "name": "Gesamt",
-                  "index": 3,
+                  "name": "Anzahl",
+                  "index": 1,
                   "aggr": "sum"
                 }
               ]
@@ -543,10 +503,7 @@
             "helium": {}
           }
         },
-        "enabled": true,
-        "editorHide": true,
-        "title": true,
-        "lineNumbers": false
+        "enabled": true
       },
       "settings": {
         "params": {},
@@ -556,6 +513,10 @@
         "code": "SUCCESS",
         "msg": [
           {
+            "type": "HTML",
+            "data": "    <p>Um zu verstehen, wie viele Rezensionen verifiziert sind, werden die verifizierten Reviews aus dem Datensatz gezählt. Anhand des Tortendiagramms lässt sich erkennen, dass 67 % (332645) der Rezensionen von Amazon verifiziert wurden und die restlichen 33 % (164932) nicht. Der Anteil an potenziell \"glaubwürdigen\" Rezensionen ist somit höher.\n    </p>\n\n"
+          },
+          {
             "type": "TABLE",
             "data": "Typ\tAnzahl\nVerifizierte Rezensionen\t332645\nUnverifizierte Rezensionen\t164932\n"
           }
@@ -564,29 +525,32 @@
       "apps": [],
       "runtimeInfos": {},
       "progressUpdateIntervalMs": 500,
-      "jobName": "paragraph_1680955440034_776933290",
+      "jobName": "paragraph_1681562648464_623880120",
       "id": "paragraph_1680955440034_776933290",
-      "dateCreated": "2023-04-08T12:04:00+0000",
-      "dateStarted": "2023-04-09T11:41:29+0000",
-      "dateFinished": "2023-04-09T11:41:30+0000",
+      "dateCreated": "2023-04-15T12:44:08+0000",
       "status": "FINISHED",
-      "$$hashKey": "object:190"
+      "$$hashKey": "object:5063",
+      "dateFinished": "2023-04-15T12:44:23+0000",
+      "dateStarted": "2023-04-15T12:44:21+0000"
     },
     {
       "title": "1.3 Anteil der Bewertungen ",
-      "text": "/**\n * Welchen Anteil an Sternebewertungen innerhalb der Rezensionen gibt es?\n * \n **/\n const collection = db.getCollection('video_games');\n const allRatingsSorted = collection.aggregate([\n  {\n    $group: {\n      _id: \"$overall\",\n      count: { $count: { } }\n    },\n  },\n  {\n    $sort: { _id: 1 }\n  }\n]) \nprint(\"%table Wertung\\tAnzahl\")\nallRatingsSorted.forEach((ratingGroup) => {\n    print(ratingGroup._id + \"\\t\" + ratingGroup.count);\n})",
+      "text": "%mongodb\n // Verwende die Collection video_games\n const collection = db.getCollection('video_games');\n // Gruppiere nach den Bewertungen (1-5) und zähle diese im gesamten Datensatz\n const allRatingsSorted = collection.aggregate([\n  {\n    $group: {\n      _id: \"$overall\",\n      count: { $count: { } }\n    },\n  }\n]) \n\nprint(`%html\n    <p>Um die Verteilung der Bewertung zu sehen, werden die Rezensionen nach den Bewertungen gruppiert gezählt. Anhand des Tortendiagramms ist zu erkennen, dass 60 % der Rezensionen 5 Sterne Bewertungen sind und weitere 19 % 4 Sterne Bewertungen. Somit sind fast 80 % der Rezensionen positiv bewertet. \n`)\nprint(\"%table Wertung\\tAnzahl\")\nallRatingsSorted.forEach((ratingGroup) => {\n    print(ratingGroup._id + \"\\t\" + ratingGroup.count);\n})",
       "user": "anonymous",
-      "dateUpdated": "2023-04-10T15:56:00+0000",
+      "dateUpdated": "2023-04-15T12:44:23+0000",
       "progress": 0,
       "config": {
         "editorSetting": {
           "language": "javascript",
           "editOnDblClick": false,
-          "completionKey": "TAB"
+          "completionKey": "TAB",
+          "completionSupport": true
         },
         "colWidth": 4,
         "editorMode": "ace/mode/javascript",
         "fontSize": 9,
+        "editorHide": true,
+        "title": true,
         "results": {
           "0": {
             "graph": {
@@ -650,11 +614,38 @@
               ]
             },
             "helium": {}
+          },
+          "1": {
+            "graph": {
+              "mode": "pieChart",
+              "height": 324,
+              "optionOpen": false,
+              "setting": {
+                "table": {
+                  "tableGridState": {},
+                  "tableColumnTypeState": {
+                    "names": {
+                      "Wertung": "string",
+                      "Anzahl": "string"
+                    },
+                    "updated": false
+                  },
+                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]",
+                  "tableOptionValue": {
+                    "useFilter": false,
+                    "showPagination": false,
+                    "showAggregationFooter": false
+                  },
+                  "updated": false,
+                  "initialized": false
+                }
+              },
+              "commonSetting": {}
+            },
+            "helium": {}
           }
         },
-        "enabled": true,
-        "editorHide": true,
-        "title": true
+        "enabled": true
       },
       "settings": {
         "params": {},
@@ -664,32 +655,44 @@
         "code": "SUCCESS",
         "msg": [
           {
+            "type": "HTML",
+            "data": "    <p>Um die Verteilung der Bewertung zu sehen, werden die Rezensionen nach den Bewertungen gruppiert gezählt. Anhand des Tortendiagramms ist zu erkennen, dass 60 % der Rezensionen 5 Sterne Bewertungen sind und weitere 19 % 4 Sterne Bewertungen. Somit sind fast 80 % der Rezensionen positiv bewertet. \n\n"
+          },
+          {
             "type": "TABLE",
-            "data": "Wertung\tAnzahl\n1\t30883\n2\t24135\n3\t49146\n4\t93654\n5\t299759\n"
+            "data": "Wertung\tAnzahl\n5\t299759\n3\t49146\n1\t30883\n4\t93654\n2\t24135\n"
           }
         ]
       },
       "apps": [],
       "runtimeInfos": {},
       "progressUpdateIntervalMs": 500,
-      "jobName": "paragraph_1681031292518_291421606",
+      "jobName": "paragraph_1681562648465_846559520",
       "id": "paragraph_1681031292518_291421606",
-      "dateCreated": "2023-04-09T09:08:12+0000",
-      "dateStarted": "2023-04-09T11:41:22+0000",
-      "dateFinished": "2023-04-09T11:41:23+0000",
+      "dateCreated": "2023-04-15T12:44:08+0000",
       "status": "FINISHED",
-      "$$hashKey": "object:191"
+      "$$hashKey": "object:5064",
+      "dateFinished": "2023-04-15T12:44:24+0000",
+      "dateStarted": "2023-04-15T12:44:23+0000"
     },
     {
       "title": "1.4 Anzahl der Rezensionen über die Zeit",
-      "text": "const collection = db.getCollection('video_games');\n\nconst timeGrouped = collection.aggregate([\n        \n        {\n            $project: {\n                date:  {$toDate: { $multiply: ['$unixReviewTime', 1000] }},\n                verified: '$verified',\n                overall: '$overall'\n            }\n        },\n        {\n            $group: {\n                _id: {\n                    $dateToString: { format: \"%Y-%m\", date: \"$date\" }\n                },\n                count: { $count: {} },\n                countVerified: { $sum: { $cond: [\"$verified\", 1, 0] }}, \n                countUnverified: { $sum: { $cond: [\"$verified\", 0, 1] }}, \n                countGreater: { $sum: {$cond: { if: { $gte: [ \"$overall\", 3 ] }, then: 1, else: 0 } }}, \n                countSmaller: { $sum: {$cond: { if: { $lt: [ \"$overall\", 3 ] }, then: 1, else: 0 } }}, \n            }\n        },\n        {\n            $sort: {\n                _id: 1,\n            }\n        }\n    ])\nprint(\"%table Datum\\tAlle Reviews\\tverifiziert\\tunverifiziert\\tGut(>=3 Sterne)\\tSchlecht(< 3 Sterne)\");\ntimeGrouped.forEach((entry) => {\n    print(entry._id + \"\\t\" + entry.count + '\\t' + entry.countVerified + '\\t' + entry.countUnverified + '\\t' + entry.countGreater + '\\t' + entry.countSmaller)\n})",
+      "text": "%mongodb\n// Verwende die Collection video_games\nconst collection = db.getCollection('video_games');\n/**\n * Project: Konvertiere die unixReviewTime zu einer lesbaren Zeit\n * \n * Group: Gruppiere nach dem Datum im Format Jahr-Monat um alle Monate anzuzeigen\n * \n * Zähle daraufhin die Rezensionen pro Monat zwischen 1-2 (schlecht) und 3-5 (gut)\n * \n * Sort: Sortiere aufsteigend nach der Zeit\n */\nconst timeGrouped = collection.aggregate([\n        \n        {\n            $project: {\n                date:  {$toDate: { $multiply: ['$unixReviewTime', 1000] }},\n                verified: '$verified',\n                overall: '$overall'\n            }\n        },\n        {\n            $group: {\n                _id: {\n                    $dateToString: { format: \"%Y-%m\", date: \"$date\" }\n                },\n                count: { $count: {} },\n                countGreater: { $sum: {$cond: { if: { $gte: [ \"$overall\", 3 ] }, then: 1, else: 0 } }}, \n                countSmaller: { $sum: {$cond: { if: { $lt: [ \"$overall\", 3 ] }, then: 1, else: 0 } }}, \n            }\n        },\n        {\n            $sort: {\n                _id: 1,\n            }\n        }\n    ])\nprint(`%html\n<p>\nDer Verlauf aller Rezensionen lässt sich über die Summe der Rezensionen gruppiert nach dem Format \"Jahr-Monat\" darstellen. Der folgende Graph zeigt die Menge aller Rezensionen verteilt auf die Monate und deren Jahre. Es lässt sich ein starker Anstieg an Rezensionen zu Beginn des Jahres 2013 erkennen. Außerdem gab es die meisten Rezensionen im Dezember 2014 mit 10104 Rezensionen im Monat. Generell lassen sich Sptizen immer zu Beginn des Jahres und Ende eines Jahres erkennen (z.B. 2012-12/2013-1 oder 2015-12/2016-1). Die Spitzen lassen sich vermutlich auf das Weihnachstgeschäft zurückführen, da viele Spiele zu Beginn oder Ende eines Jahres herausgegeben werden und diese dann als Weihnachtsgeschenke verkauft werden.\n</p>\n<p>\n    Weiterhin lässt sich erkennen, dass durch alle Jahre hinweg der Anteil an positiven Bewertungen über der Anzahl negaitver Bewertungen liegt und das Verhältnis nicht proportional wächst. So ist beispielsweise Februar 2008 das Verhältnis von guten zu schlechten Bewertungen 1018 / 135 (7.54 fach) und Februar 2015 8763 / 728 (12 fach).\n</p>\n`)\nprint(\"%table Datum\\tAlle Reviews\\tGut(>=3 Sterne)\\tSchlecht(< 3 Sterne)\");\ntimeGrouped.forEach((entry) => {\n    print(entry._id + \"\\t\" + entry.count + '\\t' + entry.countGreater + '\\t' + entry.countSmaller)\n})",
       "user": "anonymous",
-      "dateUpdated": "2023-04-10T15:56:28+0000",
+      "dateUpdated": "2023-04-15T12:44:24+0000",
       "progress": 0,
       "config": {
+        "editorSetting": {
+          "language": "javascript",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
         "colWidth": 6,
+        "editorMode": "ace/mode/javascript",
         "fontSize": 9,
-        "enabled": true,
+        "editorHide": true,
+        "title": true,
         "results": {
           "0": {
             "graph": {
@@ -758,13 +761,87 @@
                   "aggr": "sum"
                 },
                 {
+                  "name": "Schlecht(< 3 Sterne)",
+                  "index": 3,
+                  "aggr": "sum"
+                },
+                {
                   "name": "Gut(>=3 Sterne)",
-                  "index": 4,
+                  "index": 2,
+                  "aggr": "sum"
+                }
+              ]
+            },
+            "helium": {}
+          },
+          "1": {
+            "graph": {
+              "mode": "lineChart",
+              "height": 278,
+              "optionOpen": false,
+              "setting": {
+                "table": {
+                  "tableGridState": {},
+                  "tableColumnTypeState": {
+                    "names": {
+                      "Datum": "string",
+                      "Alle Reviews": "string",
+                      "Gut(>=3 Sterne)": "string",
+                      "Schlecht(< 3 Sterne)": "string"
+                    },
+                    "updated": false
+                  },
+                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]",
+                  "tableOptionValue": {
+                    "useFilter": false,
+                    "showPagination": false,
+                    "showAggregationFooter": false
+                  },
+                  "updated": false,
+                  "initialized": false
+                },
+                "multiBarChart": {
+                  "rotate": {
+                    "degree": "-45"
+                  },
+                  "xLabelStatus": "default"
+                },
+                "stackedAreaChart": {
+                  "rotate": {
+                    "degree": "-45"
+                  },
+                  "xLabelStatus": "default"
+                },
+                "lineChart": {
+                  "rotate": {
+                    "degree": "-45"
+                  },
+                  "xLabelStatus": "default"
+                }
+              },
+              "commonSetting": {},
+              "keys": [
+                {
+                  "name": "Datum",
+                  "index": 0,
+                  "aggr": "sum"
+                }
+              ],
+              "groups": [],
+              "values": [
+                {
+                  "name": "Alle Reviews",
+                  "index": 1,
+                  "aggr": "sum"
+                },
+                {
+                  "name": "Gut(>=3 Sterne)",
+                  "index": 2,
                   "aggr": "sum"
                 },
                 {
                   "name": "Schlecht(< 3 Sterne)",
-                  "index": 5,
+                  "index": 3,
                   "aggr": "sum"
                 }
               ]
@@ -772,14 +849,7 @@
             "helium": {}
           }
         },
-        "editorSetting": {
-          "language": "javascript",
-          "editOnDblClick": false,
-          "completionKey": "TAB"
-        },
-        "editorMode": "ace/mode/javascript",
-        "editorHide": true,
-        "title": true
+        "enabled": true
       },
       "settings": {
         "params": {},
@@ -789,33 +859,38 @@
         "code": "SUCCESS",
         "msg": [
           {
+            "type": "HTML",
+            "data": "<p>\nDer Verlauf aller Rezensionen lässt sich über die Summe der Rezensionen gruppiert nach dem Format \"Jahr-Monat\" darstellen. Der folgende Graph zeigt die Menge aller Rezensionen verteilt auf die Monate und deren Jahre. Es lässt sich ein starker Anstieg an Rezensionen zu Beginn des Jahres 2013 erkennen. Außerdem gab es die meisten Rezensionen im Dezember 2014 mit 10104 Rezensionen im Monat. Generell lassen sich Sptizen immer zu Beginn des Jahres und Ende eines Jahres erkennen (z.B. 2012-12/2013-1 oder 2015-12/2016-1). Die Spitzen lassen sich vermutlich auf das Weihnachstgeschäft zurückführen, da viele Spiele zu Beginn oder Ende eines Jahres herausgegeben werden und diese dann als Weihnachtsgeschenke verkauft werden.\n</p>\n<p>\n    Weiterhin lässt sich erkennen, dass durch alle Jahre hinweg der Anteil an positiven Bewertungen über der Anzahl negaitver Bewertungen liegt und das Verhältnis nicht proportional wächst. So ist beispielsweise Februar 2008 das Verhältnis von guten zu schlechten Bewertungen 1018 / 135 (7.54 fach) und Februar 2015 8763 / 728 (12 fach).\n</p>\n\n"
+          },
+          {
             "type": "TABLE",
-            "data": "Datum\tAlle Reviews\tverifiziert\tunverifiziert\tGut(>=3 Sterne)\tSchlecht(< 3 Sterne)\n1999-10\t1\t0\t1\t1\t0\n1999-11\t28\t2\t26\t24\t4\n1999-12\t52\t2\t50\t47\t5\n2000-01\t54\t1\t53\t48\t6\n2000-02\t42\t1\t41\t38\t4\n2000-03\t54\t0\t54\t47\t7\n2000-04\t58\t3\t55\t51\t7\n2000-05\t108\t1\t107\t97\t11\n2000-06\t107\t2\t105\t95\t12\n2000-07\t155\t4\t151\t127\t28\n2000-08\t200\t1\t199\t177\t23\n2000-09\t167\t3\t164\t147\t20\n2000-10\t226\t5\t221\t201\t25\n2000-11\t322\t11\t311\t281\t41\n2000-12\t366\t19\t347\t309\t57\n2001-01\t337\t12\t325\t303\t34\n2001-02\t313\t9\t304\t273\t40\n2001-03\t252\t6\t246\t225\t27\n2001-04\t319\t5\t314\t277\t42\n2001-05\t339\t8\t331\t300\t39\n2001-06\t392\t8\t384\t336\t56\n2001-07\t526\t16\t510\t469\t57\n2001-08\t402\t17\t385\t365\t37\n2001-09\t336\t13\t323\t296\t40\n2001-10\t436\t13\t423\t387\t49\n2001-11\t727\t21\t706\t651\t76\n2001-12\t750\t21\t729\t670\t80\n2002-01\t586\t22\t564\t520\t66\n2002-02\t546\t23\t523\t475\t71\n2002-03\t637\t27\t610\t560\t77\n2002-04\t567\t19\t548\t501\t66\n2002-05\t483\t19\t464\t435\t48\n2002-06\t612\t23\t589\t555\t57\n2002-07\t678\t24\t654\t608\t70\n2002-08\t550\t18\t532\t477\t73\n2002-09\t581\t25\t556\t519\t62\n2002-10\t619\t31\t588\t530\t89\n2002-11\t765\t22\t743\t669\t96\n2002-12\t728\t26\t702\t633\t95\n2003-01\t616\t33\t583\t552\t64\n2003-02\t439\t17\t422\t386\t53\n2003-03\t677\t33\t644\t606\t71\n2003-04\t635\t30\t605\t560\t75\n2003-05\t532\t21\t511\t463\t69\n2003-06\t576\t15\t561\t520\t56\n2003-07\t607\t34\t573\t538\t69\n2003-08\t453\t21\t432\t405\t48\n2003-09\t412\t24\t388\t373\t39\n2003-10\t551\t12\t539\t480\t71\n2003-11\t652\t22\t630\t576\t76\n2003-12\t849\t20\t829\t757\t92\n2004-01\t811\t17\t794\t710\t101\n2004-02\t465\t23\t442\t401\t64\n2004-03\t544\t17\t527\t460\t84\n2004-04\t556\t23\t533\t467\t89\n2004-05\t507\t13\t494\t435\t72\n2004-06\t558\t16\t542\t495\t63\n2004-07\t556\t13\t543\t489\t67\n2004-08\t532\t18\t514\t466\t66\n2004-09\t562\t16\t546\t482\t80\n2004-10\t624\t18\t606\t544\t80\n2004-11\t819\t18\t801\t718\t101\n2004-12\t713\t24\t689\t619\t94\n2005-01\t678\t21\t657\t570\t108\n2005-02\t457\t15\t442\t390\t67\n2005-03\t641\t18\t623\t561\t80\n2005-04\t635\t33\t602\t547\t88\n2005-05\t566\t34\t532\t486\t80\n2005-06\t639\t26\t613\t551\t88\n2005-07\t646\t17\t629\t572\t74\n2005-08\t542\t31\t511\t475\t67\n2005-09\t610\t34\t576\t550\t60\n2005-10\t651\t28\t623\t568\t83\n2005-11\t893\t33\t860\t775\t118\n2005-12\t829\t34\t795\t714\t115\n2006-01\t655\t26\t629\t567\t88\n2006-02\t487\t40\t447\t413\t74\n2006-03\t671\t45\t626\t569\t102\n2006-04\t609\t39\t570\t528\t81\n2006-05\t508\t26\t482\t430\t78\n2006-06\t549\t26\t523\t457\t92\n2006-07\t552\t31\t521\t461\t91\n2006-08\t452\t51\t401\t398\t54\n2006-09\t433\t37\t396\t357\t76\n2006-10\t548\t47\t501\t449\t99\n2006-11\t807\t56\t751\t648\t159\n2006-12\t774\t69\t705\t669\t105\n2007-01\t1011\t233\t778\t898\t113\n2007-02\t614\t113\t501\t521\t93\n2007-03\t906\t157\t749\t774\t132\n2007-04\t681\t111\t570\t608\t73\n2007-05\t776\t161\t615\t695\t81\n2007-06\t692\t124\t568\t587\t105\n2007-07\t830\t136\t694\t711\t119\n2007-08\t758\t129\t629\t677\t81\n2007-09\t854\t160\t694\t742\t112\n2007-10\t862\t164\t698\t781\t81\n2007-11\t1167\t173\t994\t1010\t157\n2007-12\t1324\t239\t1085\t1121\t203\n2008-01\t1305\t268\t1037\t1129\t176\n2008-02\t1153\t266\t887\t1018\t135\n2008-03\t1298\t224\t1074\t1139\t159\n2008-04\t1307\t270\t1037\t1165\t142\n2008-05\t1677\t382\t1295\t1409\t268\n2008-06\t1722\t431\t1291\t1490\t232\n2008-07\t1546\t294\t1252\t1323\t223\n2008-08\t1275\t231\t1044\t1078\t197\n2008-09\t1713\t295\t1418\t1407\t306\n2008-10\t1923\t289\t1634\t1592\t331\n2008-11\t2196\t265\t1931\t1889\t307\n2008-12\t2016\t392\t1624\t1711\t305\n2009-01\t2099\t527\t1572\t1856\t243\n2009-02\t1651\t348\t1303\t1442\t209\n2009-03\t1806\t394\t1412\t1523\t283\n2009-04\t1587\t349\t1238\t1341\t246\n2009-05\t1481\t354\t1127\t1268\t213\n2009-06\t1884\t385\t1499\t1597\t287\n2009-07\t1496\t304\t1192\t1314\t182\n2009-08\t1319\t274\t1045\t1104\t215\n2009-09\t1377\t424\t953\t1167\t210\n2009-10\t1717\t720\t997\t1501\t216\n2009-11\t1688\t720\t968\t1442\t246\n2009-12\t1821\t840\t981\t1566\t255\n2010-01\t2101\t1033\t1068\t1787\t314\n2010-02\t1781\t862\t919\t1552\t229\n2010-03\t1759\t858\t901\t1519\t240\n2010-04\t1325\t609\t716\t1145\t180\n2010-05\t1388\t747\t641\t1202\t186\n2010-06\t1211\t555\t656\t1038\t173\n2010-07\t1362\t626\t736\t1102\t260\n2010-08\t1276\t589\t687\t1090\t186\n2010-09\t1387\t724\t663\t1161\t226\n2010-10\t1489\t710\t779\t1259\t230\n2010-11\t1559\t681\t878\t1300\t259\n2010-12\t1748\t877\t871\t1509\t239\n2011-01\t1665\t873\t792\t1422\t243\n2011-02\t1248\t678\t570\t1093\t155\n2011-03\t1624\t876\t748\t1381\t243\n2011-04\t1457\t786\t671\t1245\t212\n2011-05\t1573\t802\t771\t1356\t217\n2011-06\t1486\t750\t736\t1264\t222\n2011-07\t1322\t742\t580\t1137\t185\n2011-08\t1547\t892\t655\t1368\t179\n2011-09\t1558\t908\t650\t1373\t185\n2011-10\t1661\t969\t692\t1426\t235\n2011-11\t2028\t953\t1075\t1706\t322\n2011-12\t2138\t1126\t1012\t1839\t299\n2012-01\t2023\t1080\t943\t1743\t280\n2012-02\t1935\t1054\t881\t1685\t250\n2012-03\t2332\t1141\t1191\t1996\t336\n2012-04\t1641\t941\t700\t1398\t243\n2012-05\t1973\t911\t1062\t1467\t506\n2012-06\t1652\t862\t790\t1329\t323\n2012-07\t1612\t938\t674\t1346\t266\n2012-08\t1570\t953\t617\t1331\t239\n2012-09\t1430\t834\t596\t1217\t213\n2012-10\t1768\t1001\t767\t1515\t253\n2012-11\t2831\t1868\t963\t2468\t363\n2012-12\t5804\t4832\t972\t5262\t542\n2013-01\t5567\t4700\t867\t5071\t496\n2013-02\t4056\t3356\t700\t3627\t429\n2013-03\t4850\t3928\t922\t4285\t565\n2013-04\t3902\t3182\t720\t3529\t373\n2013-05\t3424\t2829\t595\t3068\t356\n2013-06\t2916\t2369\t547\t2619\t297\n2013-07\t3347\t2791\t556\t3012\t335\n2013-08\t3388\t2743\t645\t3052\t336\n2013-09\t3068\t2484\t584\t2753\t315\n2013-10\t3217\t2478\t739\t2898\t319\n2013-11\t4728\t3273\t1455\t4086\t642\n2013-12\t5778\t4332\t1446\t5147\t631\n2014-01\t5632\t4559\t1073\t5052\t580\n2014-02\t4476\t3665\t811\t3959\t517\n2014-03\t5276\t4094\t1182\t4698\t578\n2014-04\t3793\t3044\t749\t3363\t430\n2014-05\t3788\t3003\t785\t3368\t420\n2014-06\t3606\t2676\t930\t3195\t411\n2014-07\t7147\t5236\t1911\t6557\t590\n2014-08\t7491\t5353\t2138\t6909\t582\n2014-09\t7167\t5036\t2131\t6504\t663\n2014-10\t7466\t5272\t2194\t6731\t735\n2014-11\t7851\t5856\t1995\t6955\t896\n2014-12\t10104\t8660\t1444\t9278\t826\n2015-01\t9911\t8811\t1100\t9152\t759\n2015-02\t9491\t8481\t1010\t8763\t728\n2015-03\t8920\t7777\t1143\t8193\t727\n2015-04\t7530\t6560\t970\t6878\t652\n2015-05\t6584\t5739\t845\t6046\t538\n2015-06\t6369\t5475\t894\t5769\t600\n2015-07\t7148\t6281\t867\t6511\t637\n2015-08\t6914\t6050\t864\t6257\t657\n2015-09\t6446\t5348\t1098\t5806\t640\n2015-10\t6899\t5768\t1131\t6179\t720\n2015-11\t7559\t6036\t1523\t6697\t862\n2015-12\t7569\t6183\t1386\t6769\t800\n2016-01\t8694\t7564\t1130\t7866\t828\n2016-02\t7398\t6347\t1051\t6654\t744\n2016-03\t7614\t6534\t1080\t6905\t709\n2016-04\t6172\t5220\t952\t5543\t629\n2016-05\t6649\t5605\t1044\t6054\t595\n2016-06\t5893\t5036\t857\t5292\t601\n2016-07\t5475\t4743\t732\t4968\t507\n2016-08\t6034\t5128\t906\t5405\t629\n2016-09\t5152\t4426\t726\t4620\t532\n2016-10\t5175\t4283\t892\t4647\t528\n2016-11\t5424\t4369\t1055\t4780\t644\n2016-12\t6211\t5478\t733\t5616\t595\n2017-01\t6367\t5720\t647\t5821\t546\n2017-02\t4152\t3737\t415\t3774\t378\n2017-03\t4958\t4405\t553\t4473\t485\n2017-04\t3767\t3348\t419\t3394\t373\n2017-05\t3196\t2843\t353\t2875\t321\n2017-06\t2709\t2391\t318\t2419\t290\n2017-07\t2698\t2391\t307\t2422\t276\n2017-08\t2697\t2420\t277\t2412\t285\n2017-09\t2266\t2045\t221\t2036\t230\n2017-10\t2075\t1835\t240\t1803\t272\n2017-11\t2201\t1980\t221\t1980\t221\n2017-12\t2113\t1902\t211\t1866\t247\n2018-01\t2005\t1841\t164\t1816\t189\n2018-02\t1858\t1712\t146\t1683\t175\n2018-03\t2247\t2112\t135\t2021\t226\n2018-04\t1887\t1772\t115\t1718\t169\n2018-05\t1374\t1262\t112\t1241\t133\n2018-06\t1020\t928\t92\t884\t136\n2018-07\t752\t675\t77\t662\t90\n2018-08\t497\t453\t44\t455\t42\n2018-09\t170\t125\t45\t156\t14\n2018-10\t4\t2\t2\t4\t0\n"
+            "data": "Datum\tAlle Reviews\tGut(>=3 Sterne)\tSchlecht(< 3 Sterne)\n1999-10\t1\t1\t0\n1999-11\t28\t24\t4\n1999-12\t52\t47\t5\n2000-01\t54\t48\t6\n2000-02\t42\t38\t4\n2000-03\t54\t47\t7\n2000-04\t58\t51\t7\n2000-05\t108\t97\t11\n2000-06\t107\t95\t12\n2000-07\t155\t127\t28\n2000-08\t200\t177\t23\n2000-09\t167\t147\t20\n2000-10\t226\t201\t25\n2000-11\t322\t281\t41\n2000-12\t366\t309\t57\n2001-01\t337\t303\t34\n2001-02\t313\t273\t40\n2001-03\t252\t225\t27\n2001-04\t319\t277\t42\n2001-05\t339\t300\t39\n2001-06\t392\t336\t56\n2001-07\t526\t469\t57\n2001-08\t402\t365\t37\n2001-09\t336\t296\t40\n2001-10\t436\t387\t49\n2001-11\t727\t651\t76\n2001-12\t750\t670\t80\n2002-01\t586\t520\t66\n2002-02\t546\t475\t71\n2002-03\t637\t560\t77\n2002-04\t567\t501\t66\n2002-05\t483\t435\t48\n2002-06\t612\t555\t57\n2002-07\t678\t608\t70\n2002-08\t550\t477\t73\n2002-09\t581\t519\t62\n2002-10\t619\t530\t89\n2002-11\t765\t669\t96\n2002-12\t728\t633\t95\n2003-01\t616\t552\t64\n2003-02\t439\t386\t53\n2003-03\t677\t606\t71\n2003-04\t635\t560\t75\n2003-05\t532\t463\t69\n2003-06\t576\t520\t56\n2003-07\t607\t538\t69\n2003-08\t453\t405\t48\n2003-09\t412\t373\t39\n2003-10\t551\t480\t71\n2003-11\t652\t576\t76\n2003-12\t849\t757\t92\n2004-01\t811\t710\t101\n2004-02\t465\t401\t64\n2004-03\t544\t460\t84\n2004-04\t556\t467\t89\n2004-05\t507\t435\t72\n2004-06\t558\t495\t63\n2004-07\t556\t489\t67\n2004-08\t532\t466\t66\n2004-09\t562\t482\t80\n2004-10\t624\t544\t80\n2004-11\t819\t718\t101\n2004-12\t713\t619\t94\n2005-01\t678\t570\t108\n2005-02\t457\t390\t67\n2005-03\t641\t561\t80\n2005-04\t635\t547\t88\n2005-05\t566\t486\t80\n2005-06\t639\t551\t88\n2005-07\t646\t572\t74\n2005-08\t542\t475\t67\n2005-09\t610\t550\t60\n2005-10\t651\t568\t83\n2005-11\t893\t775\t118\n2005-12\t829\t714\t115\n2006-01\t655\t567\t88\n2006-02\t487\t413\t74\n2006-03\t671\t569\t102\n2006-04\t609\t528\t81\n2006-05\t508\t430\t78\n2006-06\t549\t457\t92\n2006-07\t552\t461\t91\n2006-08\t452\t398\t54\n2006-09\t433\t357\t76\n2006-10\t548\t449\t99\n2006-11\t807\t648\t159\n2006-12\t774\t669\t105\n2007-01\t1011\t898\t113\n2007-02\t614\t521\t93\n2007-03\t906\t774\t132\n2007-04\t681\t608\t73\n2007-05\t776\t695\t81\n2007-06\t692\t587\t105\n2007-07\t830\t711\t119\n2007-08\t758\t677\t81\n2007-09\t854\t742\t112\n2007-10\t862\t781\t81\n2007-11\t1167\t1010\t157\n2007-12\t1324\t1121\t203\n2008-01\t1305\t1129\t176\n2008-02\t1153\t1018\t135\n2008-03\t1298\t1139\t159\n2008-04\t1307\t1165\t142\n2008-05\t1677\t1409\t268\n2008-06\t1722\t1490\t232\n2008-07\t1546\t1323\t223\n2008-08\t1275\t1078\t197\n2008-09\t1713\t1407\t306\n2008-10\t1923\t1592\t331\n2008-11\t2196\t1889\t307\n2008-12\t2016\t1711\t305\n2009-01\t2099\t1856\t243\n2009-02\t1651\t1442\t209\n2009-03\t1806\t1523\t283\n2009-04\t1587\t1341\t246\n2009-05\t1481\t1268\t213\n2009-06\t1884\t1597\t287\n2009-07\t1496\t1314\t182\n2009-08\t1319\t1104\t215\n2009-09\t1377\t1167\t210\n2009-10\t1717\t1501\t216\n2009-11\t1688\t1442\t246\n2009-12\t1821\t1566\t255\n2010-01\t2101\t1787\t314\n2010-02\t1781\t1552\t229\n2010-03\t1759\t1519\t240\n2010-04\t1325\t1145\t180\n2010-05\t1388\t1202\t186\n2010-06\t1211\t1038\t173\n2010-07\t1362\t1102\t260\n2010-08\t1276\t1090\t186\n2010-09\t1387\t1161\t226\n2010-10\t1489\t1259\t230\n2010-11\t1559\t1300\t259\n2010-12\t1748\t1509\t239\n2011-01\t1665\t1422\t243\n2011-02\t1248\t1093\t155\n2011-03\t1624\t1381\t243\n2011-04\t1457\t1245\t212\n2011-05\t1573\t1356\t217\n2011-06\t1486\t1264\t222\n2011-07\t1322\t1137\t185\n2011-08\t1547\t1368\t179\n2011-09\t1558\t1373\t185\n2011-10\t1661\t1426\t235\n2011-11\t2028\t1706\t322\n2011-12\t2138\t1839\t299\n2012-01\t2023\t1743\t280\n2012-02\t1935\t1685\t250\n2012-03\t2332\t1996\t336\n2012-04\t1641\t1398\t243\n2012-05\t1973\t1467\t506\n2012-06\t1652\t1329\t323\n2012-07\t1612\t1346\t266\n2012-08\t1570\t1331\t239\n2012-09\t1430\t1217\t213\n2012-10\t1768\t1515\t253\n2012-11\t2831\t2468\t363\n2012-12\t5804\t5262\t542\n2013-01\t5567\t5071\t496\n2013-02\t4056\t3627\t429\n2013-03\t4850\t4285\t565\n2013-04\t3902\t3529\t373\n2013-05\t3424\t3068\t356\n2013-06\t2916\t2619\t297\n2013-07\t3347\t3012\t335\n2013-08\t3388\t3052\t336\n2013-09\t3068\t2753\t315\n2013-10\t3217\t2898\t319\n2013-11\t4728\t4086\t642\n2013-12\t5778\t5147\t631\n2014-01\t5632\t5052\t580\n2014-02\t4476\t3959\t517\n2014-03\t5276\t4698\t578\n2014-04\t3793\t3363\t430\n2014-05\t3788\t3368\t420\n2014-06\t3606\t3195\t411\n2014-07\t7147\t6557\t590\n2014-08\t7491\t6909\t582\n2014-09\t7167\t6504\t663\n2014-10\t7466\t6731\t735\n2014-11\t7851\t6955\t896\n2014-12\t10104\t9278\t826\n2015-01\t9911\t9152\t759\n2015-02\t9491\t8763\t728\n2015-03\t8920\t8193\t727\n2015-04\t7530\t6878\t652\n2015-05\t6584\t6046\t538\n2015-06\t6369\t5769\t600\n2015-07\t7148\t6511\t637\n2015-08\t6914\t6257\t657\n2015-09\t6446\t5806\t640\n2015-10\t6899\t6179\t720\n2015-11\t7559\t6697\t862\n2015-12\t7569\t6769\t800\n2016-01\t8694\t7866\t828\n2016-02\t7398\t6654\t744\n2016-03\t7614\t6905\t709\n2016-04\t6172\t5543\t629\n2016-05\t6649\t6054\t595\n2016-06\t5893\t5292\t601\n2016-07\t5475\t4968\t507\n2016-08\t6034\t5405\t629\n2016-09\t5152\t4620\t532\n2016-10\t5175\t4647\t528\n2016-11\t5424\t4780\t644\n2016-12\t6211\t5616\t595\n2017-01\t6367\t5821\t546\n2017-02\t4152\t3774\t378\n2017-03\t4958\t4473\t485\n2017-04\t3767\t3394\t373\n2017-05\t3196\t2875\t321\n2017-06\t2709\t2419\t290\n2017-07\t2698\t2422\t276\n2017-08\t2697\t2412\t285\n2017-09\t2266\t2036\t230\n2017-10\t2075\t1803\t272\n2017-11\t2201\t1980\t221\n2017-12\t2113\t1866\t247\n2018-01\t2005\t1816\t189\n2018-02\t1858\t1683\t175\n2018-03\t2247\t2021\t226\n2018-04\t1887\t1718\t169\n2018-05\t1374\t1241\t133\n2018-06\t1020\t884\t136\n2018-07\t752\t662\t90\n2018-08\t497\t455\t42\n2018-09\t170\t156\t14\n2018-10\t4\t4\t0\n"
           }
         ]
       },
       "apps": [],
       "runtimeInfos": {},
       "progressUpdateIntervalMs": 500,
-      "jobName": "paragraph_1681050048531_1238668461",
+      "jobName": "paragraph_1681562648465_748331904",
       "id": "paragraph_1681050048531_1238668461",
-      "dateCreated": "2023-04-09T14:20:48+0000",
-      "dateStarted": "2023-04-10T13:48:28+0000",
-      "dateFinished": "2023-04-10T13:48:30+0000",
+      "dateCreated": "2023-04-15T12:44:08+0000",
       "status": "FINISHED",
-      "$$hashKey": "object:192"
+      "$$hashKey": "object:5065",
+      "dateFinished": "2023-04-15T12:44:26+0000",
+      "dateStarted": "2023-04-15T12:44:24+0000"
     },
     {
       "title": "1.5 Trend der verifizierten Rezensionen",
-      "text": "const collection = db.getCollection('video_games');\n\nconst timeGrouped = collection.aggregate([\n        \n        {\n            $project: {\n                date:  {$toDate: { $multiply: ['$unixReviewTime', 1000] }},\n                verified: '$verified',\n                overall: '$overall'\n            }\n        },\n        {\n            $group: {\n                _id: {\n                    $dateToString: { format: \"%Y-%m\", date: \"$date\" }\n                },\n                count: { $count: {} },\n                countVerified: { $sum: { $cond: [\"$verified\", 1, 0] }}, \n                countUnverified: { $sum: { $cond: [\"$verified\", 0, 1] }}, \n            }\n        },\n        {\n            $sort: {\n                _id: 1,\n            }\n        }\n    ])\nprint(\"%table Datum\\tAlle Reviews\\tverifiziert\\tunverifiziert\");\ntimeGrouped.forEach((entry) => {\n    print(entry._id + \"\\t\" + entry.count + '\\t' + entry.countVerified + '\\t' + entry.countUnverified)\n})",
+      "text": "%mongodb\n// Verwende die Collection video_games\nconst collection = db.getCollection('video_games');\n/**\n * Ähnlich zu 1.4 nur für verifizierte Rezensionen\n * Project: Konvertiere die unixReviewTime zu einer lesbaren Zeit\n * Group: Group: Gruppiere nach dem Datum im Format Jahr-Monat um alle Monate anzuzeigen\n * Zähle daraufhin die verizierten und unverifizierten Rezensionen\n */\nconst timeGrouped = collection.aggregate([\n        \n        {\n            $project: {\n                date:  {$toDate: { $multiply: ['$unixReviewTime', 1000] }},\n                verified: '$verified',\n                overall: '$overall'\n            }\n        },\n        {\n            $group: {\n                _id: {\n                    $dateToString: { format: \"%Y-%m\", date: \"$date\" }\n                },\n                count: { $count: {} },\n                countVerified: { $sum: { $cond: [\"$verified\", 1, 0] }}, \n                countUnverified: { $sum: { $cond: [\"$verified\", 0, 1] }}, \n            }\n        },\n        {\n            $sort: {\n                _id: 1,\n            }\n        }\n    ])\n    \nprint(`%html\n    <p>\n    Ähnlich zu Kapitel 1.4 lassen sich die verifizierten Rezensionen zählen. Der folgende Graph zeigt, dass vor Januar 2010 die Menge verifizierter Rezensionen kleiner war als die Menge unverifizierter Rezensionen. Dies lässt entweder vermuten, dass Amazon seit 2010 mehr Zeit darin investiert Rezensionen zu verifizieren oder Rezensionen seitdem einfacher verifiziert werden.\n    </p>\n`)\nprint(\"%table Datum\\tAlle Reviews\\tverifiziert\\tunverifiziert\");\ntimeGrouped.forEach((entry) => {\n    print(entry._id + \"\\t\" + entry.count + '\\t' + entry.countVerified + '\\t' + entry.countUnverified)\n})",
       "user": "anonymous",
-      "dateUpdated": "2023-04-10T14:56:04+0000",
+      "dateUpdated": "2023-04-15T12:44:26+0000",
       "progress": 0,
       "config": {
         "editorSetting": {
           "language": "javascript",
           "editOnDblClick": false,
-          "completionKey": "TAB"
+          "completionKey": "TAB",
+          "completionSupport": true
         },
         "colWidth": 6,
         "editorMode": "ace/mode/javascript",
@@ -888,6 +963,69 @@
               ]
             },
             "helium": {}
+          },
+          "1": {
+            "graph": {
+              "mode": "lineChart",
+              "height": 406,
+              "optionOpen": false,
+              "setting": {
+                "table": {
+                  "tableGridState": {},
+                  "tableColumnTypeState": {
+                    "names": {
+                      "Datum": "string",
+                      "Alle Reviews": "string",
+                      "verifiziert": "string",
+                      "unverifiziert": "string"
+                    },
+                    "updated": false
+                  },
+                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]",
+                  "tableOptionValue": {
+                    "useFilter": false,
+                    "showPagination": false,
+                    "showAggregationFooter": false
+                  },
+                  "updated": false,
+                  "initialized": false
+                },
+                "stackedAreaChart": {
+                  "rotate": {
+                    "degree": "-45"
+                  },
+                  "xLabelStatus": "default"
+                },
+                "lineChart": {
+                  "rotate": {
+                    "degree": "-45"
+                  },
+                  "xLabelStatus": "default"
+                }
+              },
+              "commonSetting": {},
+              "keys": [
+                {
+                  "name": "Datum",
+                  "index": 0,
+                  "aggr": "sum"
+                }
+              ],
+              "groups": [],
+              "values": [
+                {
+                  "name": "verifiziert",
+                  "index": 2,
+                  "aggr": "sum"
+                },
+                {
+                  "name": "unverifiziert",
+                  "index": 3,
+                  "aggr": "sum"
+                }
+              ]
+            },
+            "helium": {}
           }
         },
         "enabled": true
@@ -900,6 +1038,10 @@
         "code": "SUCCESS",
         "msg": [
           {
+            "type": "HTML",
+            "data": "    <p>\n    Ähnlich zu Kapitel 1.4 lassen sich die verifizierten Rezensionen zählen. Der folgende Graph zeigt, dass vor Januar 2010 die Menge verifizierter Rezensionen kleiner war als die Menge unverifizierter Rezensionen. Dies lässt entweder vermuten, dass Amazon seit 2010 mehr Zeit darin investiert Rezensionen zu verifizieren oder Rezensionen seitdem einfacher verifiziert werden.\n    </p>\n\n"
+          },
+          {
             "type": "TABLE",
             "data": "Datum\tAlle Reviews\tverifiziert\tunverifiziert\n1999-10\t1\t0\t1\n1999-11\t28\t2\t26\n1999-12\t52\t2\t50\n2000-01\t54\t1\t53\n2000-02\t42\t1\t41\n2000-03\t54\t0\t54\n2000-04\t58\t3\t55\n2000-05\t108\t1\t107\n2000-06\t107\t2\t105\n2000-07\t155\t4\t151\n2000-08\t200\t1\t199\n2000-09\t167\t3\t164\n2000-10\t226\t5\t221\n2000-11\t322\t11\t311\n2000-12\t366\t19\t347\n2001-01\t337\t12\t325\n2001-02\t313\t9\t304\n2001-03\t252\t6\t246\n2001-04\t319\t5\t314\n2001-05\t339\t8\t331\n2001-06\t392\t8\t384\n2001-07\t526\t16\t510\n2001-08\t402\t17\t385\n2001-09\t336\t13\t323\n2001-10\t436\t13\t423\n2001-11\t727\t21\t706\n2001-12\t750\t21\t729\n2002-01\t586\t22\t564\n2002-02\t546\t23\t523\n2002-03\t637\t27\t610\n2002-04\t567\t19\t548\n2002-05\t483\t19\t464\n2002-06\t612\t23\t589\n2002-07\t678\t24\t654\n2002-08\t550\t18\t532\n2002-09\t581\t25\t556\n2002-10\t619\t31\t588\n2002-11\t765\t22\t743\n2002-12\t728\t26\t702\n2003-01\t616\t33\t583\n2003-02\t439\t17\t422\n2003-03\t677\t33\t644\n2003-04\t635\t30\t605\n2003-05\t532\t21\t511\n2003-06\t576\t15\t561\n2003-07\t607\t34\t573\n2003-08\t453\t21\t432\n2003-09\t412\t24\t388\n2003-10\t551\t12\t539\n2003-11\t652\t22\t630\n2003-12\t849\t20\t829\n2004-01\t811\t17\t794\n2004-02\t465\t23\t442\n2004-03\t544\t17\t527\n2004-04\t556\t23\t533\n2004-05\t507\t13\t494\n2004-06\t558\t16\t542\n2004-07\t556\t13\t543\n2004-08\t532\t18\t514\n2004-09\t562\t16\t546\n2004-10\t624\t18\t606\n2004-11\t819\t18\t801\n2004-12\t713\t24\t689\n2005-01\t678\t21\t657\n2005-02\t457\t15\t442\n2005-03\t641\t18\t623\n2005-04\t635\t33\t602\n2005-05\t566\t34\t532\n2005-06\t639\t26\t613\n2005-07\t646\t17\t629\n2005-08\t542\t31\t511\n2005-09\t610\t34\t576\n2005-10\t651\t28\t623\n2005-11\t893\t33\t860\n2005-12\t829\t34\t795\n2006-01\t655\t26\t629\n2006-02\t487\t40\t447\n2006-03\t671\t45\t626\n2006-04\t609\t39\t570\n2006-05\t508\t26\t482\n2006-06\t549\t26\t523\n2006-07\t552\t31\t521\n2006-08\t452\t51\t401\n2006-09\t433\t37\t396\n2006-10\t548\t47\t501\n2006-11\t807\t56\t751\n2006-12\t774\t69\t705\n2007-01\t1011\t233\t778\n2007-02\t614\t113\t501\n2007-03\t906\t157\t749\n2007-04\t681\t111\t570\n2007-05\t776\t161\t615\n2007-06\t692\t124\t568\n2007-07\t830\t136\t694\n2007-08\t758\t129\t629\n2007-09\t854\t160\t694\n2007-10\t862\t164\t698\n2007-11\t1167\t173\t994\n2007-12\t1324\t239\t1085\n2008-01\t1305\t268\t1037\n2008-02\t1153\t266\t887\n2008-03\t1298\t224\t1074\n2008-04\t1307\t270\t1037\n2008-05\t1677\t382\t1295\n2008-06\t1722\t431\t1291\n2008-07\t1546\t294\t1252\n2008-08\t1275\t231\t1044\n2008-09\t1713\t295\t1418\n2008-10\t1923\t289\t1634\n2008-11\t2196\t265\t1931\n2008-12\t2016\t392\t1624\n2009-01\t2099\t527\t1572\n2009-02\t1651\t348\t1303\n2009-03\t1806\t394\t1412\n2009-04\t1587\t349\t1238\n2009-05\t1481\t354\t1127\n2009-06\t1884\t385\t1499\n2009-07\t1496\t304\t1192\n2009-08\t1319\t274\t1045\n2009-09\t1377\t424\t953\n2009-10\t1717\t720\t997\n2009-11\t1688\t720\t968\n2009-12\t1821\t840\t981\n2010-01\t2101\t1033\t1068\n2010-02\t1781\t862\t919\n2010-03\t1759\t858\t901\n2010-04\t1325\t609\t716\n2010-05\t1388\t747\t641\n2010-06\t1211\t555\t656\n2010-07\t1362\t626\t736\n2010-08\t1276\t589\t687\n2010-09\t1387\t724\t663\n2010-10\t1489\t710\t779\n2010-11\t1559\t681\t878\n2010-12\t1748\t877\t871\n2011-01\t1665\t873\t792\n2011-02\t1248\t678\t570\n2011-03\t1624\t876\t748\n2011-04\t1457\t786\t671\n2011-05\t1573\t802\t771\n2011-06\t1486\t750\t736\n2011-07\t1322\t742\t580\n2011-08\t1547\t892\t655\n2011-09\t1558\t908\t650\n2011-10\t1661\t969\t692\n2011-11\t2028\t953\t1075\n2011-12\t2138\t1126\t1012\n2012-01\t2023\t1080\t943\n2012-02\t1935\t1054\t881\n2012-03\t2332\t1141\t1191\n2012-04\t1641\t941\t700\n2012-05\t1973\t911\t1062\n2012-06\t1652\t862\t790\n2012-07\t1612\t938\t674\n2012-08\t1570\t953\t617\n2012-09\t1430\t834\t596\n2012-10\t1768\t1001\t767\n2012-11\t2831\t1868\t963\n2012-12\t5804\t4832\t972\n2013-01\t5567\t4700\t867\n2013-02\t4056\t3356\t700\n2013-03\t4850\t3928\t922\n2013-04\t3902\t3182\t720\n2013-05\t3424\t2829\t595\n2013-06\t2916\t2369\t547\n2013-07\t3347\t2791\t556\n2013-08\t3388\t2743\t645\n2013-09\t3068\t2484\t584\n2013-10\t3217\t2478\t739\n2013-11\t4728\t3273\t1455\n2013-12\t5778\t4332\t1446\n2014-01\t5632\t4559\t1073\n2014-02\t4476\t3665\t811\n2014-03\t5276\t4094\t1182\n2014-04\t3793\t3044\t749\n2014-05\t3788\t3003\t785\n2014-06\t3606\t2676\t930\n2014-07\t7147\t5236\t1911\n2014-08\t7491\t5353\t2138\n2014-09\t7167\t5036\t2131\n2014-10\t7466\t5272\t2194\n2014-11\t7851\t5856\t1995\n2014-12\t10104\t8660\t1444\n2015-01\t9911\t8811\t1100\n2015-02\t9491\t8481\t1010\n2015-03\t8920\t7777\t1143\n2015-04\t7530\t6560\t970\n2015-05\t6584\t5739\t845\n2015-06\t6369\t5475\t894\n2015-07\t7148\t6281\t867\n2015-08\t6914\t6050\t864\n2015-09\t6446\t5348\t1098\n2015-10\t6899\t5768\t1131\n2015-11\t7559\t6036\t1523\n2015-12\t7569\t6183\t1386\n2016-01\t8694\t7564\t1130\n2016-02\t7398\t6347\t1051\n2016-03\t7614\t6534\t1080\n2016-04\t6172\t5220\t952\n2016-05\t6649\t5605\t1044\n2016-06\t5893\t5036\t857\n2016-07\t5475\t4743\t732\n2016-08\t6034\t5128\t906\n2016-09\t5152\t4426\t726\n2016-10\t5175\t4283\t892\n2016-11\t5424\t4369\t1055\n2016-12\t6211\t5478\t733\n2017-01\t6367\t5720\t647\n2017-02\t4152\t3737\t415\n2017-03\t4958\t4405\t553\n2017-04\t3767\t3348\t419\n2017-05\t3196\t2843\t353\n2017-06\t2709\t2391\t318\n2017-07\t2698\t2391\t307\n2017-08\t2697\t2420\t277\n2017-09\t2266\t2045\t221\n2017-10\t2075\t1835\t240\n2017-11\t2201\t1980\t221\n2017-12\t2113\t1902\t211\n2018-01\t2005\t1841\t164\n2018-02\t1858\t1712\t146\n2018-03\t2247\t2112\t135\n2018-04\t1887\t1772\t115\n2018-05\t1374\t1262\t112\n2018-06\t1020\t928\t92\n2018-07\t752\t675\t77\n2018-08\t497\t453\t44\n2018-09\t170\t125\t45\n2018-10\t4\t2\t2\n"
           }
@@ -908,25 +1050,69 @@
       "apps": [],
       "runtimeInfos": {},
       "progressUpdateIntervalMs": 500,
-      "jobName": "paragraph_1681133896872_1044207576",
+      "jobName": "paragraph_1681562648465_589217702",
       "id": "paragraph_1681133896872_1044207576",
-      "dateCreated": "2023-04-10T13:38:16+0000",
-      "dateStarted": "2023-04-10T13:39:12+0000",
-      "dateFinished": "2023-04-10T13:39:14+0000",
+      "dateCreated": "2023-04-15T12:44:08+0000",
       "status": "FINISHED",
-      "$$hashKey": "object:193"
+      "$$hashKey": "object:5066",
+      "dateFinished": "2023-04-15T12:44:28+0000",
+      "dateStarted": "2023-04-15T12:44:26+0000"
     },
     {
-      "title": "2.1 Die 5 Artikel mit den meisten Bewertungen",
-      "text": "/**\n * - Welche sind die top 10 besten Gegenstände aus der Kategorie Videospiele?\n **/\n \n const collection = db.getCollection('video_games');\n \n const bestVideoGames = collection.aggregate([\n        {\n            $group: {\n                _id: '$asin',\n                count: { $count: {}},\n                countVerified: { $sum: { $cond: [\"$verified\", 1, 0] }}, \n                countUnVerified: { $sum: { $cond: [\"$verified\", 0, 1] }}, \n            }\n        },\n        {\n          $sort: {count: -1}  \n        },\n        {\n            $limit: 5\n        }\n     ])\n     \nprint(\"%table Platz\\tASIN\\tBewertungen\\tVerifiziert\\tUnverifiziert\")     \nlet i = 1;\nbestVideoGames.forEach((videoGame,) => {\n    print(i++ + '\\t' + videoGame._id + '\\t' +  videoGame.count + \"\\t\" + videoGame.countVerified+ '\\t' + videoGame.countUnVerified)\n})\n",
+      "text": "%mongodb\nprint(`%html <h3>2. Analyse der Artikel</h3>`)",
       "user": "anonymous",
-      "dateUpdated": "2023-04-10T14:46:48+0000",
+      "dateUpdated": "2023-04-15T12:44:28+0000",
       "progress": 0,
       "config": {
         "editorSetting": {
           "language": "javascript",
           "editOnDblClick": false,
-          "completionKey": "TAB"
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/javascript",
+        "fontSize": 9,
+        "editorHide": true,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "<h3>2. Analyse der Artikel</h3>\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1681562648465_579037698",
+      "id": "paragraph_1681499507941_780433942",
+      "dateCreated": "2023-04-15T12:44:08+0000",
+      "status": "FINISHED",
+      "$$hashKey": "object:5067",
+      "dateFinished": "2023-04-15T12:44:28+0000",
+      "dateStarted": "2023-04-15T12:44:28+0000"
+    },
+    {
+      "title": "2.1 Die 5 Artikel mit den meisten Rezensionen",
+      "text": "%mongodb\n// Verwende die Collection video_games\n const collection = db.getCollection('video_games');\n/**\n * Group: Gruppiere nach allen Artikeln (ASIN)\n * \n * Zähle daraufhin die Anzahl alle Rezensionen (unverifiziert und verifiziert) für jeden Artikel\n * \n * Sort: Sortiere absteigend nach der Menge alle Bewertungen (-1), damit die besten zuerst vorkommen\n * \n * Limit: Limitiere auf 5 Artikel\n */\nconst bestVideoGames = collection.aggregate([\n        {\n            $group: {\n                _id: '$asin',\n                count: { $count: {}},\n                countVerified: { $sum: { $cond: [\"$verified\", 1, 0] }}, \n                countUnVerified: { $sum: { $cond: [\"$verified\", 0, 1] }}, \n            }\n        },\n        {\n          $sort: {count: -1}  \n        },\n        {\n            $limit: 5\n        }\n     ])\n     \nprint(`%html\n    <p>\n    Anhand des Datensatzes lässt sich erkennen, welche Aritkel am häufigsten bewertet wurden. Dafür werden alle Rezensionen nach dem Artikel gruppiert gezählt und absteigend sortiert.\n    Das folgende Balkendiagramm zeigt die 5 Artikel mit den meisten Rezensionen anhand ihres Anteils an verifizierten und unverifizierten Rezensionen. Die Summe an verifizierten und unverifizierten Rezensionen bildet die Gesamtmenge. Der Artikel B00178630A hat mit 1381 die meisten Rezensionen und mit 788 unverfizierten Rezensionen fast 80 % der gesamten Rezensionen des zweiten Platzes B000ZK9QCS. Der Artikel B00178630A entspricht <a href=https://www.amazon.com/Diablo-III-pc/dp/B00178630A>Diablo 3</a>.\n    </p>\n`)\nprint(\"%table Platz\\tASIN\\tRezensionen\\tVerifiziert\\tUnverifiziert\")     \nlet i = 1;\nbestVideoGames.forEach((videoGame,) => {\n    print(i++ + '\\t' + videoGame._id + '\\t' +  videoGame.count + \"\\t\" + videoGame.countVerified+ '\\t' + videoGame.countUnVerified)\n})\n",
+      "user": "anonymous",
+      "dateUpdated": "2023-04-15T12:44:29+0000",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "javascript",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
         },
         "colWidth": 4,
         "editorMode": "ace/mode/javascript",
@@ -936,7 +1122,7 @@
         "results": {
           "0": {
             "graph": {
-              "mode": "multiBarChart",
+              "mode": "table",
               "height": 300,
               "optionOpen": false,
               "setting": {
@@ -1069,6 +1255,65 @@
               ]
             },
             "helium": {}
+          },
+          "1": {
+            "graph": {
+              "mode": "multiBarChart",
+              "height": 480,
+              "optionOpen": false,
+              "setting": {
+                "table": {
+                  "tableGridState": {},
+                  "tableColumnTypeState": {
+                    "names": {
+                      "Platz": "string",
+                      "ASIN": "string",
+                      "Bewertungen": "string",
+                      "Verifiziert": "string",
+                      "Unverifiziert": "string"
+                    },
+                    "updated": false
+                  },
+                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]",
+                  "tableOptionValue": {
+                    "useFilter": false,
+                    "showPagination": false,
+                    "showAggregationFooter": false
+                  },
+                  "updated": false,
+                  "initialized": false
+                },
+                "multiBarChart": {
+                  "rotate": {
+                    "degree": "-45"
+                  },
+                  "xLabelStatus": "default",
+                  "stacked": true
+                }
+              },
+              "commonSetting": {},
+              "keys": [
+                {
+                  "name": "ASIN",
+                  "index": 1,
+                  "aggr": "sum"
+                }
+              ],
+              "groups": [],
+              "values": [
+                {
+                  "name": "Verifiziert",
+                  "index": 3,
+                  "aggr": "sum"
+                },
+                {
+                  "name": "Unverifiziert",
+                  "index": 4,
+                  "aggr": "sum"
+                }
+              ]
+            },
+            "helium": {}
           }
         },
         "enabled": true
@@ -1081,33 +1326,38 @@
         "code": "SUCCESS",
         "msg": [
           {
+            "type": "HTML",
+            "data": "    <p>\n    Anhand des Datensatzes lässt sich erkennen, welche Aritkel am häufigsten bewertet wurden. Dafür werden alle Rezensionen nach dem Artikel gruppiert gezählt und absteigend sortiert.\n    Das folgende Balkendiagramm zeigt die 5 Artikel mit den meisten Rezensionen anhand ihres Anteils an verifizierten und unverifizierten Rezensionen. Die Summe an verifizierten und unverifizierten Rezensionen bildet die Gesamtmenge. Der Artikel B00178630A hat mit 1381 die meisten Rezensionen und mit 788 unverfizierten Rezensionen fast 80 % der gesamten Rezensionen des zweiten Platzes B000ZK9QCS. Der Artikel B00178630A entspricht <a href=https://www.amazon.com/Diablo-III-pc/dp/B00178630A>Diablo 3</a>.\n    </p>\n\n"
+          },
+          {
             "type": "TABLE",
-            "data": "Platz\tASIN\tBewertungen\tVerifiziert\tUnverifiziert\n1\tB00178630A\t1381\t593\t788\n2\tB000ZK9QCS\t905\t601\t304\n3\tB000XJNTNS\t834\t472\t362\n4\tB00JK00S0S\t783\t549\t234\n5\tB000ZKA0J6\t774\t370\t404\n"
+            "data": "Platz\tASIN\tRezensionen\tVerifiziert\tUnverifiziert\n1\tB00178630A\t1381\t593\t788\n2\tB000ZK9QCS\t905\t601\t304\n3\tB000XJNTNS\t834\t472\t362\n4\tB00JK00S0S\t783\t549\t234\n5\tB000ZKA0J6\t774\t370\t404\n"
           }
         ]
       },
       "apps": [],
       "runtimeInfos": {},
       "progressUpdateIntervalMs": 500,
-      "jobName": "paragraph_1681045328487_288045725",
+      "jobName": "paragraph_1681562648465_1008407554",
       "id": "paragraph_1681045328487_288045725",
-      "dateCreated": "2023-04-09T13:02:08+0000",
-      "dateStarted": "2023-04-10T14:09:42+0000",
-      "dateFinished": "2023-04-10T14:09:44+0000",
+      "dateCreated": "2023-04-15T12:44:08+0000",
       "status": "FINISHED",
-      "$$hashKey": "object:194"
+      "$$hashKey": "object:5068",
+      "dateFinished": "2023-04-15T12:44:30+0000",
+      "dateStarted": "2023-04-15T12:44:29+0000"
     },
     {
-      "title": "2.2 Die 5 Artikel mit den besten Bewertungen (min. 300 Bewertungen)",
-      "text": "/**\n * - Welche sind die top 10 besten Gegenstände aus der Kategorie Videospiele?\n **/\n \n const collection = db.getCollection('video_games');\n \n const bestVideoGames = collection.aggregate([\n        {\n            $group: {\n                _id: '$asin',\n                count: { $count: {}},\n                averageRating: { $avg: '$overall'},\n                countVerified: { $sum: { $cond: [\"$verified\", 1, 0] }}, \n                countUnverified: { $sum: { $cond: [\"$verified\", 0, 1] }},\n                sumVerified: { $sum: { $cond: [\"$verified\", '$overall', 0] }}, \n                sumUnverified: { $sum: { $cond: [\"$verified\", 0, '$overall'] }},\n            }\n        },\n        {\n          $match: {\n                count: { $gt: 300 }\n          }  \n        },\n        {\n          $sort: {averageRating: -1}  \n        },\n        {\n            $limit: 5\n        },\n        {\n            $project: {\n                averageRating: '$averageRating',\n                countVerified: '$countVerified',\n                countUnverified: '$countUnverified',\n                averageRatingUnverified: {\n                    $divide: ['$sumUnverified', '$countUnverified']\n                },\n                averageRatingVerified: {\n                    $divide: ['$sumVerified', '$countVerified']\n                }\n            }\n        }\n     ])\n     \nprint(\"%table Platz\\tASIN\\tDurchschnittliche Bewertung\\tDurschnitt Verifizierter Bewertungen\\tDurchschnitt unverifizierter Bewertungen\\tAnzahl verifiziert\\tAnzahl unverifiziert\")     \nlet i = 1;\nbestVideoGames.forEach((videoGame,) => {\n    print(i++ + '\\t' + videoGame._id + '\\t' +  videoGame.averageRating + '\\t' + videoGame.averageRatingVerified + '\\t' + videoGame.averageRatingUnverified + '\\t' + videoGame.countVerified + '\\t' + videoGame.countUnverified)\n})\n",
+      "title": "2.2 Die 5 Artikel mit den besten Rezensionen (min. 300 Bewertungen)",
+      "text": "%mongodb\n// Verwende die Collection video_games\n const collection = db.getCollection('video_games');\n /**\n  * Group: Gruppiere nach allen Artikeln (ASIN)\n  * \n  * Berechne die durchschnittliche Wertung über deren Bewertungen (overall)\n  * \n  * Zähle die (un)verifizierten Bewertungen\n  * Summiere die (un)verifizierten Bewertungen\n  * \n  * Match: Verwende nur die Artikel mit mindestens 300 Bewertungen\n  * \n  * Sort: Sortiere absteigend nach der durchschnittlichen Bewertung\n  * \n  * Limit: Limitiere auf die 5 besten Artikel\n  * \n  * Project: Berechne die Durchschnittswerte von unverifizierten und verifizierten Bewertungen\n  */\n const bestVideoGames = collection.aggregate([\n        {\n            $group: {\n                _id: '$asin',\n                count: { $count: {}},\n                averageRating: { $avg: '$overall'},\n                countVerified: { $sum: { $cond: [\"$verified\", 1, 0] }}, \n                countUnverified: { $sum: { $cond: [\"$verified\", 0, 1] }},\n                sumVerified: { $sum: { $cond: [\"$verified\", '$overall', 0] }}, \n                sumUnverified: { $sum: { $cond: [\"$verified\", 0, '$overall'] }},\n            }\n        },\n        {\n          $match: {\n                count: { $gt: 300 }\n          }  \n        },\n        {\n          $sort: {averageRating: -1}  \n        },\n        {\n            $limit: 5\n        },\n        {\n            $project: {\n                averageRating: '$averageRating',\n                countVerified: '$countVerified',\n                countUnverified: '$countUnverified',\n                averageRatingUnverified: {\n                    $divide: ['$sumUnverified', '$countUnverified']\n                },\n                averageRatingVerified: {\n                    $divide: ['$sumVerified', '$countVerified']\n                }\n            }\n        }\n     ])\n     \nprint(`%html\n<p>Um den am besten bewerteten Artikel zu finden wird die durchschnittiliche Bewertung gruppiert nach den einzelnen Artikeln berechnet. Dabei werden nur Artikel mit mindestens 300 Rezensionen gezählt um ungenaue Durchschnittswerte zu vermeiden. Das Balkendiagramm zeigt die fünf im Durchschnitt am besten bewerteten Spiele absteigend von links nach rechts. Außerdem werden der Durchschnitt an unverfizierten und verifizierten Bewertungen angezeigt. Es lässt sich erkennen, dass sowohl verifzierte als auch unverifizierte Bewertungen sehr ähnlich zueinander sind und keine Vermutungen auf eventuelle Fake-Bewertungen zulassen. Es lässt sich ebenfalls nicht vermuten, dass Rezensionen nur dann verifiziert werden, wenn sie im Durchschnitt besser bewerten. \n</p>\n<p>\nDer im Durchschnitt am besten bewertete Artikel ist B0017KIBAI. Dieser entspricht einem \n<a href='https://www.amazon.de/GameCube-Controller-White-JP-Import/dp/B0017KIBAI'>GameCube Controller</a>\n</p>\n`)\nprint(\"%table Platz\\tASIN\\tDurchschnittliche Bewertung\\tDurchschnittliche verifizierte Bewertung\\tDurchschnittliche unverifizierte Bewertung\\tAnzahl verifiziert\\tAnzahl unverifiziert\")     \nlet i = 1;\nbestVideoGames.forEach((videoGame,) => {\n    print(i++ + '\\t' + videoGame._id + '\\t' +  videoGame.averageRating + '\\t' + videoGame.averageRatingVerified + '\\t' + videoGame.averageRatingUnverified + '\\t' + videoGame.countVerified + '\\t' + videoGame.countUnverified)\n})\n",
       "user": "anonymous",
-      "dateUpdated": "2023-04-10T15:45:35+0000",
+      "dateUpdated": "2023-04-15T12:44:30+0000",
       "progress": 0,
       "config": {
         "editorSetting": {
           "language": "javascript",
           "editOnDblClick": false,
-          "completionKey": "TAB"
+          "completionKey": "TAB",
+          "completionSupport": true
         },
         "colWidth": 4,
         "editorMode": "ace/mode/javascript",
@@ -1205,64 +1455,24 @@
               "commonSetting": {}
             },
             "helium": {}
-          }
-        },
-        "enabled": true
-      },
-      "settings": {
-        "params": {},
-        "forms": {}
-      },
-      "results": {
-        "code": "SUCCESS",
-        "msg": [
-          {
-            "type": "TABLE",
-            "data": "Platz\tASIN\tDurchschnittliche Bewertung\tDurschnitt Verifizierter Bewertungen\tDurchschnitt unverifizierter Bewertungen\tAnzahl verifiziert\tAnzahl unverifiziert\n1\tB0017KIBAI\t4.896024464831804\t4.913043478260869\t4.714285714285714\t299\t28\n2\tB0094X227I\t4.807058823529411\t4.805418719211823\t4.842105263157895\t406\t19\n3\tB00GANWVJE\t4.764367816091954\t4.862745098039215\t4.494623655913978\t255\t93\n4\tB000B9RI14\t4.761565836298932\t4.7818853974122\t4.238095238095238\t541\t21\n5\tB001JKTC9A\t4.7534246575342465\t4.825\t4.666666666666667\t200\t165\n"
-          }
-        ]
-      },
-      "apps": [],
-      "runtimeInfos": {},
-      "progressUpdateIntervalMs": 500,
-      "jobName": "paragraph_1681040976489_1063725718",
-      "id": "paragraph_1681040976489_1063725718",
-      "dateCreated": "2023-04-09T11:49:36+0000",
-      "dateStarted": "2023-04-10T14:47:08+0000",
-      "dateFinished": "2023-04-10T14:47:10+0000",
-      "status": "FINISHED",
-      "$$hashKey": "object:195"
-    },
-    {
-      "title": "2.3 Bewertungsverteilung für das beste Produkt",
-      "text": "const collection = db.getCollection('video_games');\n\nconst bestProductGroupedByRating = collection.aggregate([\n        {\n            $match: {\n                asin: 'B0017KIBAI',\n            }\n        },\n        {\n            $group: {\n                _id: '$overall',\n                count: { $count: {}},\n                : { $sum: { $cond: [\"$verified\", 1, 0] }}, \n            }\n        }\n    ])\n    \nprint(\"%table Bewertung\\tAnzahl\")\nbestProductGroupedByRating.forEach(review => {\n    print(review._id + '\\t' + review.count)\n})",
-      "user": "anonymous",
-      "dateUpdated": "2023-04-10T14:48:32+0000",
-      "progress": 0,
-      "config": {
-        "editorSetting": {
-          "language": "javascript",
-          "editOnDblClick": false,
-          "completionKey": "TAB"
-        },
-        "colWidth": 4,
-        "editorMode": "ace/mode/javascript",
-        "fontSize": 9,
-        "editorHide": true,
-        "title": true,
-        "results": {
-          "0": {
+          },
+          "1": {
             "graph": {
-              "mode": "pieChart",
-              "height": 300,
+              "mode": "multiBarChart",
+              "height": 362,
               "optionOpen": false,
               "setting": {
                 "table": {
                   "tableGridState": {},
                   "tableColumnTypeState": {
                     "names": {
-                      "Bewertung": "string",
-                      "Anzahl": "string"
+                      "Platz": "string",
+                      "ASIN": "string",
+                      "Durchschnittliche Bewertung": "string",
+                      "Durchschnittliche verifizierte Bewertung": "string",
+                      "Durchschnittliche unverifizierte Bewertung": "string",
+                      "Anzahl verifiziert": "string",
+                      "Anzahl unverifiziert": "string"
                     },
                     "updated": false
                   },
@@ -1280,21 +1490,37 @@
                     "degree": "-45"
                   },
                   "xLabelStatus": "default"
+                },
+                "stackedAreaChart": {
+                  "rotate": {
+                    "degree": "-45"
+                  },
+                  "xLabelStatus": "default"
                 }
               },
               "commonSetting": {},
               "keys": [
                 {
-                  "name": "Bewertung",
-                  "index": 0,
+                  "name": "ASIN",
+                  "index": 1,
                   "aggr": "sum"
                 }
               ],
               "groups": [],
               "values": [
                 {
-                  "name": "Anzahl",
-                  "index": 1,
+                  "name": "Durchschnittliche Bewertung",
+                  "index": 2,
+                  "aggr": "sum"
+                },
+                {
+                  "name": "Durchschnittliche verifizierte Bewertung",
+                  "index": 3,
+                  "aggr": "sum"
+                },
+                {
+                  "name": "Durchschnittliche unverifizierte Bewertung",
+                  "index": 4,
                   "aggr": "sum"
                 }
               ]
@@ -1312,33 +1538,38 @@
         "code": "SUCCESS",
         "msg": [
           {
+            "type": "HTML",
+            "data": "<p>Um den am besten bewerteten Artikel zu finden wird die durchschnittiliche Bewertung gruppiert nach den einzelnen Artikeln berechnet. Dabei werden nur Artikel mit mindestens 300 Rezensionen gezählt um ungenaue Durchschnittswerte zu vermeiden. Das Balkendiagramm zeigt die fünf im Durchschnitt am besten bewerteten Spiele absteigend von links nach rechts. Außerdem werden der Durchschnitt an unverfizierten und verifizierten Bewertungen angezeigt. Es lässt sich erkennen, dass sowohl verifzierte als auch unverifizierte Bewertungen sehr ähnlich zueinander sind und keine Vermutungen auf eventuelle Fake-Bewertungen zulassen. Es lässt sich ebenfalls nicht vermuten, dass Rezensionen nur dann verifiziert werden, wenn sie im Durchschnitt besser bewerten. \n</p>\n<p>\nDer im Durchschnitt am besten bewertete Artikel ist B0017KIBAI. Dieser entspricht einem \n<a href='https://www.amazon.de/GameCube-Controller-White-JP-Import/dp/B0017KIBAI'>GameCube Controller</a>\n</p>\n\n"
+          },
+          {
             "type": "TABLE",
-            "data": "Bewertung\tAnzahl\n2\t2\n1\t2\n4\t20\n5\t303\n"
+            "data": "Platz\tASIN\tDurchschnittliche Bewertung\tDurchschnittliche verifizierte Bewertung\tDurchschnittliche unverifizierte Bewertung\tAnzahl verifiziert\tAnzahl unverifiziert\n1\tB0017KIBAI\t4.896024464831804\t4.913043478260869\t4.714285714285714\t299\t28\n2\tB0094X227I\t4.807058823529411\t4.805418719211823\t4.842105263157895\t406\t19\n3\tB00GANWVJE\t4.764367816091954\t4.862745098039215\t4.494623655913978\t255\t93\n4\tB000B9RI14\t4.761565836298932\t4.7818853974122\t4.238095238095238\t541\t21\n5\tB001JKTC9A\t4.7534246575342465\t4.825\t4.666666666666667\t200\t165\n"
           }
         ]
       },
       "apps": [],
       "runtimeInfos": {},
       "progressUpdateIntervalMs": 500,
-      "jobName": "paragraph_1681124770566_54914646",
-      "id": "paragraph_1681124770566_54914646",
-      "dateCreated": "2023-04-10T11:06:10+0000",
-      "dateStarted": "2023-04-10T11:13:33+0000",
-      "dateFinished": "2023-04-10T11:13:34+0000",
+      "jobName": "paragraph_1681562648465_1310827541",
+      "id": "paragraph_1681040976489_1063725718",
+      "dateCreated": "2023-04-15T12:44:08+0000",
       "status": "FINISHED",
-      "$$hashKey": "object:196"
+      "$$hashKey": "object:5069",
+      "dateFinished": "2023-04-15T12:44:33+0000",
+      "dateStarted": "2023-04-15T12:44:30+0000"
     },
     {
-      "title": "2.4 Die 5 Artikel mit den schlechtesten Bewertungen (min. 300 Bewertungen)",
-      "text": "/**\n * - Welche sind die top 10 besten Gegenstände aus der Kategorie Videospiele?\n **/\n \n const collection = db.getCollection('video_games');\n \n const bestVideoGames = collection.aggregate([\n        {\n            $group: {\n                _id: '$asin',\n                count: { $count: {}},\n                averageRating: { $avg: '$overall'},\n                countVerified: { $sum: { $cond: [\"$verified\", 1, 0] }}, \n                countUnverified: { $sum: { $cond: [\"$verified\", 0, 1] }},\n                sumVerified: { $sum: { $cond: [\"$verified\", '$overall', 0] }}, \n                sumUnverified: { $sum: { $cond: [\"$verified\", 0, '$overall'] }},\n            }\n        },\n        {\n          $match: {\n                count: { $gt: 300 }\n          }  \n        },\n        {\n          $sort: {averageRating: 1}  \n        },\n        {\n            $limit: 5\n        },\n        {\n            $project: {\n                averageRating: '$averageRating',\n                countVerified: '$countVerified',\n                countUnverified: '$countUnverified',\n                averageRatingUnverified: {\n                    $divide: ['$sumUnverified', '$countUnverified']\n                },\n                averageRatingVerified: {\n                    $divide: ['$sumVerified', '$countVerified']\n                }\n            }\n        }\n     ])\n     \nprint(\"%table Platz\\tASIN\\tDurchschnittliche Bewertung\\tDurschnitt Verifizierter Bewertungen\\tDurchschnitt unverifizierter Bewertungen\\tAnzahl verifiziert\\tAnzahl unverifiziert\")     \nlet i = 1;\nbestVideoGames.forEach((videoGame,) => {\n    print(i++ + '\\t' + videoGame._id + '\\t' +  videoGame.averageRating + '\\t' + videoGame.averageRatingVerified + '\\t' + videoGame.averageRatingUnverified + '\\t' + videoGame.countVerified + '\\t' + videoGame.countUnverified)\n})\n",
+      "title": "2.4 Die 5 Artikel mit den schlechtesten Rezensionen (min. 300 Bewertungen)",
+      "text": "%mongodb\n// Verwende die Collection video_games\n const collection = db.getCollection('video_games');\n /**\n  * Selbes Prinzip wie in 2.2 nur aufsteigend sortiert.\n  */\n const bestVideoGames = collection.aggregate([\n        {\n            $group: {\n                _id: '$asin',\n                count: { $count: {}},\n                averageRating: { $avg: '$overall'},\n                countVerified: { $sum: { $cond: [\"$verified\", 1, 0] }}, \n                countUnverified: { $sum: { $cond: [\"$verified\", 0, 1] }},\n                sumVerified: { $sum: { $cond: [\"$verified\", '$overall', 0] }}, \n                sumUnverified: { $sum: { $cond: [\"$verified\", 0, '$overall'] }},\n            }\n        },\n        {\n          $match: {\n                count: { $gt: 300 }\n          }  \n        },\n        {\n          $sort: {averageRating: 1}  \n        },\n        {\n            $limit: 5\n        },\n        {\n            $project: {\n                averageRating: '$averageRating',\n                countVerified: '$countVerified',\n                countUnverified: '$countUnverified',\n                averageRatingUnverified: {\n                    $divide: ['$sumUnverified', '$countUnverified']\n                },\n                averageRatingVerified: {\n                    $divide: ['$sumVerified', '$countVerified']\n                }\n            }\n        }\n     ])\nprint(`%html\n    <p>\n        Ähnlich zu den am besten bewerteten Artikel lassen sich auch die am schlechtesten bewerten Artikel identifizieren. Dafür werden wie in Kapitel 2.2 die durchschnittlichen Bewertungen aller Aritkel mit mindestens 300 Bewertungen untersucht. Der am schlechtesten bewertete Artikel ist B00178630A, welcher <a href=https://www.amazon.com/Diablo-III-pc/dp/B00178630A>Diablo 3</a> enstpricht. Dieser ist wie in Kapitel 2.1 festgestellt wurde auch der am meisten bewertete Artikel.\n    </p>\n    <p>\n    Bei den schlechtesten Artikeln lassen sich größere Unterschiede zwischen unverifizierten und verifizierten Bewertungen feststellen.\n    </p>\n`)\nprint(\"%table Platz\\tASIN\\tDurchschnittliche Bewertung\\tDurchschnittliche verifizierte Bewertung\\tDurchschnittliche unverifizierte Bewertung\\tAnzahl verifiziert\\tAnzahl unverifiziert\")     \nlet i = 1;\nbestVideoGames.forEach((videoGame,) => {\n    print(i++ + '\\t' + videoGame._id + '\\t' +  videoGame.averageRating + '\\t' + videoGame.averageRatingVerified + '\\t' + videoGame.averageRatingUnverified + '\\t' + videoGame.countVerified + '\\t' + videoGame.countUnverified)\n})\n",
       "user": "anonymous",
-      "dateUpdated": "2023-04-10T14:48:59+0000",
+      "dateUpdated": "2023-04-15T12:44:33+0000",
       "progress": 0,
       "config": {
         "editorSetting": {
           "language": "javascript",
           "editOnDblClick": false,
-          "completionKey": "TAB"
+          "completionKey": "TAB",
+          "completionSupport": true
         },
         "colWidth": 4,
         "editorMode": "ace/mode/javascript",
@@ -1418,6 +1649,71 @@
               ]
             },
             "helium": {}
+          },
+          "1": {
+            "graph": {
+              "mode": "multiBarChart",
+              "height": 442,
+              "optionOpen": false,
+              "setting": {
+                "table": {
+                  "tableGridState": {},
+                  "tableColumnTypeState": {
+                    "names": {
+                      "Platz": "string",
+                      "ASIN": "string",
+                      "Durchschnittliche Bewertung": "string",
+                      "Durschnitt Verifizierter Bewertungen": "string",
+                      "Durchschnitt unverifizierter Bewertungen": "string",
+                      "Anzahl verifiziert": "string",
+                      "Anzahl unverifiziert": "string"
+                    },
+                    "updated": false
+                  },
+                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]",
+                  "tableOptionValue": {
+                    "useFilter": false,
+                    "showPagination": false,
+                    "showAggregationFooter": false
+                  },
+                  "updated": false,
+                  "initialized": false
+                },
+                "multiBarChart": {
+                  "rotate": {
+                    "degree": "-45"
+                  },
+                  "xLabelStatus": "default"
+                }
+              },
+              "commonSetting": {},
+              "keys": [
+                {
+                  "name": "ASIN",
+                  "index": 1,
+                  "aggr": "sum"
+                }
+              ],
+              "groups": [],
+              "values": [
+                {
+                  "name": "Durchschnittliche Bewertung",
+                  "index": 2,
+                  "aggr": "sum"
+                },
+                {
+                  "name": "Durchschnittliche verifizierte Bewertung",
+                  "index": 3,
+                  "aggr": "sum"
+                },
+                {
+                  "name": "Durchschnittliche unverifizierte Bewertung",
+                  "index": 4,
+                  "aggr": "sum"
+                }
+              ]
+            },
+            "helium": {}
           }
         },
         "enabled": true
@@ -1430,35 +1726,40 @@
         "code": "SUCCESS",
         "msg": [
           {
+            "type": "HTML",
+            "data": "    <p>\n        Ähnlich zu den am besten bewerteten Artikel lassen sich auch die am schlechtesten bewerten Artikel identifizieren. Dafür werden wie in Kapitel 2.2 die durchschnittlichen Bewertungen aller Aritkel mit mindestens 300 Bewertungen untersucht. Der am schlechtesten bewertete Artikel ist B00178630A, welcher <a href=https://www.amazon.com/Diablo-III-pc/dp/B00178630A>Diablo 3</a> enstpricht. Dieser ist wie in Kapitel 2.1 festgestellt wurde auch der am meisten bewertete Artikel.\n    </p>\n    <p>\n    Bei den schlechtesten Artikeln lassen sich größere Unterschiede zwischen unverifizierten und verifizierten Bewertungen feststellen.\n    </p>\n\n"
+          },
+          {
             "type": "TABLE",
-            "data": "Platz\tASIN\tDurchschnittliche Bewertung\tDurschnitt Verifizierter Bewertungen\tDurchschnitt unverifizierter Bewertungen\tAnzahl verifiziert\tAnzahl unverifiziert\n1\tB00178630A\t2.824764663287473\t3.5295109612141653\t2.2944162436548226\t593\t788\n2\tB000X9FV5M\t2.838616714697406\t3.673469387755102\t2.5100401606425704\t98\t249\n3\tB00ZQB28XK\t2.905759162303665\t3.041284403669725\t2.725609756097561\t218\t164\n4\tB00W8FYFBA\t2.9175531914893615\t3.704697986577181\t2.4008810572687223\t149\t227\n5\tB00BGA9Y3W\t3.5529622980251347\t3.939655172413793\t2.909090909090909\t348\t209\n"
+            "data": "Platz\tASIN\tDurchschnittliche Bewertung\tDurchschnittliche verifizierte Bewertung\tDurchschnittliche unverifizierte Bewertung\tAnzahl verifiziert\tAnzahl unverifiziert\n1\tB00178630A\t2.824764663287473\t3.5295109612141653\t2.2944162436548226\t593\t788\n2\tB000X9FV5M\t2.838616714697406\t3.673469387755102\t2.5100401606425704\t98\t249\n3\tB00ZQB28XK\t2.905759162303665\t3.041284403669725\t2.725609756097561\t218\t164\n4\tB00W8FYFBA\t2.9175531914893615\t3.704697986577181\t2.4008810572687223\t149\t227\n5\tB00BGA9Y3W\t3.5529622980251347\t3.939655172413793\t2.909090909090909\t348\t209\n"
           }
         ]
       },
       "apps": [],
       "runtimeInfos": {},
       "progressUpdateIntervalMs": 500,
-      "jobName": "paragraph_1681045156070_1332626595",
+      "jobName": "paragraph_1681562648465_1631280169",
       "id": "paragraph_1681045156070_1332626595",
-      "dateCreated": "2023-04-09T12:59:16+0000",
-      "dateStarted": "2023-04-10T14:09:59+0000",
-      "dateFinished": "2023-04-10T14:10:01+0000",
+      "dateCreated": "2023-04-15T12:44:08+0000",
       "status": "FINISHED",
-      "$$hashKey": "object:197"
+      "$$hashKey": "object:5070",
+      "dateFinished": "2023-04-15T12:44:35+0000",
+      "dateStarted": "2023-04-15T12:44:33+0000"
     },
     {
       "title": "2.5 Trend der Bewertungen für Diablo 3 (Schlechtestes Spiel)",
-      "text": "const collection = db.getCollection('video_games');\n\nconst timeGrouped = collection.aggregate([\n        {\n            $match: {\n                asin: 'B00178630A',\n            }\n        },\n        {\n            $project: {\n                date:  {$toDate: { $multiply: ['$unixReviewTime', 1000] }},\n                verified: '$verified',\n                overall: '$overall'\n            }\n        },\n        {\n            $group: {\n                _id: {\n                    $dateToString: { format: \"%Y-%m\", date: \"$date\" }\n                },\n                count: { $count: {} },\n                one: { $sum: {$cond: { if: { $eq: [ \"$overall\", 1 ] }, then: 1, else: 0 } }}, \n                two: { $sum: {$cond: { if: { $eq: [ \"$overall\", 2 ] }, then: 1, else: 0 } }}, \n                three: { $sum: {$cond: { if: { $eq: [ \"$overall\", 3 ] }, then: 1, else: 0 } }}, \n                four: { $sum: {$cond: { if: { $eq: [ \"$overall\", 4 ] }, then: 1, else: 0 } }}, \n                five: { $sum: {$cond: { if: { $eq: [ \"$overall\", 5 ] }, then: 1, else: 0 } }}, \n            }\n        },\n        {\n            $sort: {\n                _id: 1,\n            }\n        }\n    ])\nprint(\"%table Datum\\tAlle Reviews\\t1-2\\t3\\t4-5\");\ntimeGrouped.forEach((entry) => {\n    print(entry._id + \"\\t\" + entry.count + '\\t' + entry.one + entry.two + '\\t' + entry.three + '\\t' + entry.four  + entry.five)\n})",
+      "text": "%mongodb\n// Verwende die Collection video_games\nconst collection = db.getCollection('video_games');\n\n/**\n * Match: Verwende nur Rezensionen die dem Artikel 'B00178630A' entsprechen.\n * \n * Project: Konvertiere die unixReviewTime zu einer lesbaren Zeit\n * \n * Group: Gruppiere nach dem Datum im Format Jahr-Monat um alle Monate anzuzeigen\n * \n * Zähle für die jede Bewertung (1-5) die Vorkommen.\n * \n * Sort: Sortiere aufsteigend nach dem zeitlichen Verlauf\n */\nconst timeGrouped = collection.aggregate([\n        {\n            $match: {\n                asin: 'B00178630A',\n            }\n        },\n        {\n            $project: {\n                date:  {$toDate: { $multiply: ['$unixReviewTime', 1000] }},\n                verified: '$verified',\n                overall: '$overall'\n            }\n        },\n        {\n            $group: {\n                _id: {\n                    $dateToString: { format: \"%Y-%m\", date: \"$date\" }\n                },\n                count: { $count: {} },\n                one: { $sum: {$cond: { if: { $eq: [ \"$overall\", 1 ] }, then: 1, else: 0 } }}, \n                two: { $sum: {$cond: { if: { $eq: [ \"$overall\", 2 ] }, then: 1, else: 0 } }}, \n                three: { $sum: {$cond: { if: { $eq: [ \"$overall\", 3 ] }, then: 1, else: 0 } }}, \n                four: { $sum: {$cond: { if: { $eq: [ \"$overall\", 4 ] }, then: 1, else: 0 } }}, \n                five: { $sum: {$cond: { if: { $eq: [ \"$overall\", 5 ] }, then: 1, else: 0 } }}, \n            }\n        },\n        {\n            $sort: {\n                _id: 1,\n            }\n        }\n    ])\nprint(`%html\n    Um zu verstehen wie schlecht Diablo 3 über die Zeit bewertet wurde, wird das folgende Flächendiagramm dargestellt. Dafür werden alle Bewertungen über die Monate in denen das Spiel bewertet wurde gruppiert nach 1-2, 3 und 4-5 Sternen angezeigt. Die Y-Achse zeigt dabei den prozentualen Anteil für die Bewertungen an. Somit lässt sich das Verhältnis der Bewertungen unabhängig von der Anzahl der Bewertungen betrachten, da das Spiel zu seinem Erscheinungsdatum deutlich häufiger bewertet wurde als später. Diablo 3 wurde am 15. Mai 2012 veröffentlicht. In diesem und den darauffolgenden 5 Monaten wurde das Spiel überwiegend schlecht bewertet (> 70% 1-2 Sterne Bewertungen). Nach einem Artikel aus dem <a href='https://www.gamespot.com/articles/how-diablo-3-went-from-disastrous-launch-to-a-hell-of-a-good-time/1100-6503426/'>Internet</a> war das Spiel zu beginn sehr fehlerhaft. Dies erklärt die vielen negativen Rezensionen. Mit der Zeit wurde das Spiel jedoch aktualisiert und erhielt somit auch bessere Rezensionen. Betrachtet man den Graphen zwischen 2014 und 2018 wird dies deutlich. Bis auf einige Ausreißer, welche auf eine niedrige Anzahl an Bewertungen zurückzuführen sind, wurde das Spiel häufiger positiv bewertet als zu Beginn der Veröffentlichung.\n`)\nprint(\"%table Datum\\tAlle Reviews\\t1-2\\t3\\t4-5\");\ntimeGrouped.forEach((entry) => {\n    print(entry._id + \"\\t\" + entry.count + '\\t' + entry.one + entry.two + '\\t' + entry.three + '\\t' + entry.four  + entry.five)\n})",
       "user": "anonymous",
-      "dateUpdated": "2023-04-10T18:41:53+0000",
+      "dateUpdated": "2023-04-15T12:44:35+0000",
       "progress": 0,
       "config": {
         "editorSetting": {
           "language": "javascript",
           "editOnDblClick": false,
-          "completionKey": "TAB"
+          "completionKey": "TAB",
+          "completionSupport": true
         },
-        "colWidth": 8,
+        "colWidth": 12,
         "editorMode": "ace/mode/javascript",
         "fontSize": 9,
         "editorHide": true,
@@ -1474,13 +1775,11 @@
                   "tableGridState": {},
                   "tableColumnTypeState": {
                     "names": {
-                      "1": "string",
-                      "2": "string",
                       "3": "string",
-                      "4": "string",
-                      "5": "string",
                       "Datum": "string",
-                      "Alle Reviews": "string"
+                      "Alle Reviews": "string",
+                      "1-2": "string",
+                      "4-5": "string"
                     },
                     "updated": false
                   },
@@ -1541,66 +1840,22 @@
               ]
             },
             "helium": {}
-          }
-        },
-        "enabled": true
-      },
-      "settings": {
-        "params": {},
-        "forms": {}
-      },
-      "results": {
-        "code": "SUCCESS",
-        "msg": [
-          {
-            "type": "TABLE",
-            "data": "Datum\tAlle Reviews\t1-2\t3\t4-5\n2012-05\t496\t23666\t54\t6080\n2012-06\t180\t8844\t8\t1822\n2012-07\t66\t3612\t2\t106\n2012-08\t32\t126\t4\t28\n2012-09\t22\t88\t4\t20\n2012-10\t26\t160\t2\t44\n2012-11\t20\t84\t0\t44\n2012-12\t34\t124\t4\t410\n2013-01\t24\t48\t4\t44\n2013-02\t24\t60\t6\t48\n2013-03\t34\t64\t8\t412\n2013-04\t14\t22\t4\t42\n2013-05\t16\t48\t2\t20\n2013-06\t6\t20\t0\t04\n2013-07\t6\t40\t2\t00\n2013-08\t10\t02\t0\t44\n2013-09\t16\t22\t2\t46\n2013-10\t10\t40\t2\t04\n2013-11\t14\t26\t0\t06\n2013-12\t8\t02\t2\t22\n2014-01\t12\t00\t2\t46\n2014-02\t10\t02\t0\t26\n2014-03\t10\t22\t0\t24\n2014-04\t10\t00\t2\t26\n2014-05\t12\t22\t2\t42\n2014-06\t16\t22\t4\t44\n2014-07\t16\t20\t2\t210\n2014-08\t10\t20\t4\t22\n2014-09\t24\t00\t4\t614\n2014-10\t6\t20\t0\t22\n2014-11\t8\t20\t0\t06\n2014-12\t12\t20\t2\t08\n2015-01\t12\t20\t2\t44\n2015-02\t20\t40\t0\t016\n2015-03\t8\t00\t0\t26\n2015-04\t16\t02\t0\t410\n2015-05\t14\t22\t2\t26\n2015-06\t6\t00\t0\t24\n2015-07\t10\t00\t2\t08\n2015-08\t12\t20\t0\t28\n2015-09\t10\t00\t0\t010\n2015-10\t2\t00\t0\t02\n2015-11\t6\t00\t0\t06\n2015-12\t2\t00\t0\t02\n2016-01\t4\t00\t0\t22\n2016-02\t4\t00\t0\t22\n2016-03\t2\t00\t2\t00\n2016-04\t2\t00\t0\t02\n2016-05\t8\t40\t4\t00\n2016-07\t4\t20\t0\t02\n2016-08\t8\t04\t0\t22\n2016-09\t2\t00\t0\t02\n2016-11\t2\t00\t0\t02\n2016-12\t4\t00\t0\t04\n2017-01\t6\t00\t2\t04\n2017-02\t6\t20\t0\t22\n2017-05\t2\t00\t0\t02\n2017-09\t2\t00\t0\t02\n2017-12\t1\t00\t0\t01\n2018-02\t1\t00\t0\t01\n2018-03\t1\t00\t0\t01\n"
-          }
-        ]
-      },
-      "apps": [],
-      "runtimeInfos": {},
-      "progressUpdateIntervalMs": 500,
-      "jobName": "paragraph_1681064460900_727867092",
-      "id": "paragraph_1681064460900_727867092",
-      "dateCreated": "2023-04-09T18:21:00+0000",
-      "dateStarted": "2023-04-10T13:36:12+0000",
-      "dateFinished": "2023-04-10T13:36:13+0000",
-      "status": "FINISHED",
-      "$$hashKey": "object:198"
-    },
-    {
-      "title": "3.1 Rezensionen nach Name",
-      "text": "const collection = db.getCollection('video_games');\n\n\n//Frage: Wie viele Rezensionen wurden von Personen geschrieben, die den gleichen Namen haben?\n//UND wie viele eigentliche Personen (ids) haben den gleichen Namen dabei gehabt?\n//Auf den Namen in lower case gruppiert werden (Chris und chris sind gleich)\n//Die Anzahl der unique ReviewerIDs gezählt werden ($addToSet) damit nicht die reviews der gleichen person mitgezählt werden - Passiert das nicht hat man den \"count\" wert extrem unterscheidlich vom size wert\n//Das ganze projeziert werden auf die größe der Ids (\"size\")\n//und sortiert werden $sort\n\n//            $match: {verified: true}\nconst mostUsedUserName = collection.aggregate([\n        {\n            $match: {\n                reviewerName:  {$nin: ['Amazon Customer', 'Kindle Customer'] },\n            }\n        },\n        {\n         $group: {\n             _id: {$toLower: '$reviewerName'},\n             count: { $count: {}}\n         }\n        },\n        {$project: {\n            \"count\": \"$count\",\n        }\n        },\n        {\n            $sort: { \"count\": -1}\n        },\n        {\n          $limit: 10\n        }\n    ])\n    \nprint(\"%table Nutzername\\tAnzahl an Reviews\")\nmostUsedUserName.forEach((group) => {\n    print(group._id + '\\t' + group.count)\n})",
-      "user": "anonymous",
-      "dateUpdated": "2023-04-10T14:49:26+0000",
-      "progress": 0,
-      "config": {
-        "tableHide": false,
-        "editorSetting": {
-          "language": "javascript",
-          "editOnDblClick": false,
-          "completionKey": "TAB"
-        },
-        "colWidth": 4,
-        "editorMode": "ace/mode/javascript",
-        "fontSize": 9,
-        "editorHide": true,
-        "title": true,
-        "results": {
-          "0": {
+          },
+          "1": {
             "graph": {
-              "mode": "multiBarChart",
-              "height": 300,
+              "mode": "stackedAreaChart",
+              "height": 348,
               "optionOpen": false,
               "setting": {
                 "table": {
                   "tableGridState": {},
                   "tableColumnTypeState": {
                     "names": {
-                      "Rezensent": "string",
-                      "Anzahl an Rezensionen": "string",
-                      "Summe der hilfreichen Bewertungen/25 Rezensionen": "string"
+                      "3": "string",
+                      "Datum": "string",
+                      "Alle Reviews": "string",
+                      "1-2": "string",
+                      "4-5": "string"
                     },
                     "updated": false
                   },
@@ -1613,30 +1868,18 @@
                   "updated": false,
                   "initialized": false
                 },
-                "multiBarChart": {
-                  "rotate": {
-                    "degree": "-90"
-                  },
-                  "xLabelStatus": "default",
-                  "stacked": false
-                },
-                "lineChart": {
-                  "rotate": {
-                    "degree": "-45"
-                  },
-                  "xLabelStatus": "default"
-                },
                 "stackedAreaChart": {
                   "rotate": {
                     "degree": "-45"
                   },
-                  "xLabelStatus": "default"
+                  "xLabelStatus": "default",
+                  "style": "expand"
                 }
               },
               "commonSetting": {},
               "keys": [
                 {
-                  "name": "Nutzername",
+                  "name": "Datum",
                   "index": 0,
                   "aggr": "sum"
                 }
@@ -1644,8 +1887,18 @@
               "groups": [],
               "values": [
                 {
-                  "name": "Anzahl an Reviews",
-                  "index": 1,
+                  "name": "1-2",
+                  "index": 2,
+                  "aggr": "sum"
+                },
+                {
+                  "name": "3",
+                  "index": 3,
+                  "aggr": "sum"
+                },
+                {
+                  "name": "4-5",
+                  "index": 4,
                   "aggr": "sum"
                 }
               ]
@@ -1663,6 +1916,169 @@
         "code": "SUCCESS",
         "msg": [
           {
+            "type": "HTML",
+            "data": "    Um zu verstehen wie schlecht Diablo 3 über die Zeit bewertet wurde, wird das folgende Flächendiagramm dargestellt. Dafür werden alle Bewertungen über die Monate in denen das Spiel bewertet wurde gruppiert nach 1-2, 3 und 4-5 Sternen angezeigt. Die Y-Achse zeigt dabei den prozentualen Anteil für die Bewertungen an. Somit lässt sich das Verhältnis der Bewertungen unabhängig von der Anzahl der Bewertungen betrachten, da das Spiel zu seinem Erscheinungsdatum deutlich häufiger bewertet wurde als später. Diablo 3 wurde am 15. Mai 2012 veröffentlicht. In diesem und den darauffolgenden 5 Monaten wurde das Spiel überwiegend schlecht bewertet (> 70% 1-2 Sterne Bewertungen). Nach einem Artikel aus dem <a href='https://www.gamespot.com/articles/how-diablo-3-went-from-disastrous-launch-to-a-hell-of-a-good-time/1100-6503426/'>Internet</a> war das Spiel zu beginn sehr fehlerhaft. Dies erklärt die vielen negativen Rezensionen. Mit der Zeit wurde das Spiel jedoch aktualisiert und erhielt somit auch bessere Rezensionen. Betrachtet man den Graphen zwischen 2014 und 2018 wird dies deutlich. Bis auf einige Ausreißer, welche auf eine niedrige Anzahl an Bewertungen zurückzuführen sind, wurde das Spiel häufiger positiv bewertet als zu Beginn der Veröffentlichung.\n\n"
+          },
+          {
+            "type": "TABLE",
+            "data": "Datum\tAlle Reviews\t1-2\t3\t4-5\n2012-05\t496\t23666\t54\t6080\n2012-06\t180\t8844\t8\t1822\n2012-07\t66\t3612\t2\t106\n2012-08\t32\t126\t4\t28\n2012-09\t22\t88\t4\t20\n2012-10\t26\t160\t2\t44\n2012-11\t20\t84\t0\t44\n2012-12\t34\t124\t4\t410\n2013-01\t24\t48\t4\t44\n2013-02\t24\t60\t6\t48\n2013-03\t34\t64\t8\t412\n2013-04\t14\t22\t4\t42\n2013-05\t16\t48\t2\t20\n2013-06\t6\t20\t0\t04\n2013-07\t6\t40\t2\t00\n2013-08\t10\t02\t0\t44\n2013-09\t16\t22\t2\t46\n2013-10\t10\t40\t2\t04\n2013-11\t14\t26\t0\t06\n2013-12\t8\t02\t2\t22\n2014-01\t12\t00\t2\t46\n2014-02\t10\t02\t0\t26\n2014-03\t10\t22\t0\t24\n2014-04\t10\t00\t2\t26\n2014-05\t12\t22\t2\t42\n2014-06\t16\t22\t4\t44\n2014-07\t16\t20\t2\t210\n2014-08\t10\t20\t4\t22\n2014-09\t24\t00\t4\t614\n2014-10\t6\t20\t0\t22\n2014-11\t8\t20\t0\t06\n2014-12\t12\t20\t2\t08\n2015-01\t12\t20\t2\t44\n2015-02\t20\t40\t0\t016\n2015-03\t8\t00\t0\t26\n2015-04\t16\t02\t0\t410\n2015-05\t14\t22\t2\t26\n2015-06\t6\t00\t0\t24\n2015-07\t10\t00\t2\t08\n2015-08\t12\t20\t0\t28\n2015-09\t10\t00\t0\t010\n2015-10\t2\t00\t0\t02\n2015-11\t6\t00\t0\t06\n2015-12\t2\t00\t0\t02\n2016-01\t4\t00\t0\t22\n2016-02\t4\t00\t0\t22\n2016-03\t2\t00\t2\t00\n2016-04\t2\t00\t0\t02\n2016-05\t8\t40\t4\t00\n2016-07\t4\t20\t0\t02\n2016-08\t8\t04\t0\t22\n2016-09\t2\t00\t0\t02\n2016-11\t2\t00\t0\t02\n2016-12\t4\t00\t0\t04\n2017-01\t6\t00\t2\t04\n2017-02\t6\t20\t0\t22\n2017-05\t2\t00\t0\t02\n2017-09\t2\t00\t0\t02\n2017-12\t1\t00\t0\t01\n2018-02\t1\t00\t0\t01\n2018-03\t1\t00\t0\t01\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1681562648465_851924039",
+      "id": "paragraph_1681064460900_727867092",
+      "dateCreated": "2023-04-15T12:44:08+0000",
+      "status": "FINISHED",
+      "$$hashKey": "object:5071",
+      "dateFinished": "2023-04-15T12:44:36+0000",
+      "dateStarted": "2023-04-15T12:44:35+0000"
+    },
+    {
+      "text": "%mongodb\nprint(`%html <h3>3. Analyse der Rezensenten</h3>`)",
+      "user": "anonymous",
+      "dateUpdated": "2023-04-15T12:44:36+0000",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "javascript",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/javascript",
+        "fontSize": 9,
+        "editorHide": true,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "<h3>3. Analyse der Rezensenten</h3>\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1681562648465_845172271",
+      "id": "paragraph_1681499533198_2065963864",
+      "dateCreated": "2023-04-15T12:44:08+0000",
+      "status": "FINISHED",
+      "$$hashKey": "object:5072",
+      "dateFinished": "2023-04-15T12:44:37+0000",
+      "dateStarted": "2023-04-15T12:44:36+0000"
+    },
+    {
+      "title": "3.1 Rezensionen nach Nutzername",
+      "text": "%mongodb\n// Verwende die Collection video_games\nconst collection = db.getCollection('video_games');\n\n/**\n * Match: Extrahiere alle Vorkommen generischer Amazon-Namen wie \"Amazon Customer\"\n * \n * Group: Gruppiere nach den Namen der Rezensenten (reviewerName) in lower case weil 'chris' und 'Chris' gleiche Namen sind\n * count: Zähle die Häufigkeit\n * \n * Sort: Sortiere nach der Häufigkeit absteigend\n * \n * Limit: Limitiere auf die 10 häufigsten Namen\n * \n */\nconst mostUsedUserName = collection.aggregate([\n        {\n            $match: {\n                reviewerName:  {$nin: ['Amazon Customer', 'Kindle Customer'] },\n            }\n        },\n        {\n         $group: {\n             _id: {$toLower: '$reviewerName'},\n             count: { $count: {}}\n         }\n        },\n        {\n            $sort: { \"count\": -1}\n        },\n        {\n          $limit: 10\n        }\n    ])\n    \nprint(`%html\n<p>\nDer Datensatz ermöglicht ebenfalls die Untersuchung der einzelnen Rezensenten. So lässt sich beispielsweise Zählen, wie viele Rezensionen unter welchem Nutzernamen stattgefunden haben. Dafür werden alle Reviews gruppiert nach dem Namen der Rezensenten gezählt und alle generischen Namen wie \"Amazon Customer\" gefiltert. Es muss bedacht werden, dass wie in Kapitel 1.1 festgestellt wurde, es mehrere Nutzer mit dem gleichen Namen geben kann. Die folgende Tabelle zeigt, dass unter dem Nutzernamen chris mit 1207 die meisten Rezensionen verfasst wurden\n</p>\n`)\nprint(\"%table Nutzername\\tAnzahl an Reviews\")\nmostUsedUserName.forEach((group) => {\n    print(group._id + '\\t' + group.count)\n})",
+      "user": "anonymous",
+      "dateUpdated": "2023-04-15T12:44:39+0000",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "javascript",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 4,
+        "editorMode": "ace/mode/javascript",
+        "fontSize": 9,
+        "editorHide": true,
+        "title": true,
+        "results": {
+          "0": {
+            "graph": {
+              "mode": "table",
+              "height": 300,
+              "optionOpen": false,
+              "setting": {
+                "table": {
+                  "tableGridState": {},
+                  "tableColumnTypeState": {
+                    "names": {
+                      "Nutzername": "string",
+                      "Anzahl an Reviews": "string"
+                    },
+                    "updated": false
+                  },
+                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]",
+                  "tableOptionValue": {
+                    "useFilter": false,
+                    "showPagination": false,
+                    "showAggregationFooter": false
+                  },
+                  "updated": false,
+                  "initialized": false
+                },
+                "multiBarChart": {
+                  "rotate": {
+                    "degree": "-45"
+                  },
+                  "xLabelStatus": "default"
+                }
+              },
+              "commonSetting": {},
+              "keys": [],
+              "groups": [],
+              "values": []
+            },
+            "helium": {}
+          },
+          "1": {
+            "graph": {
+              "mode": "table",
+              "height": 402,
+              "optionOpen": false,
+              "setting": {
+                "table": {
+                  "tableGridState": {},
+                  "tableColumnTypeState": {
+                    "names": {
+                      "Nutzername": "string",
+                      "Anzahl an Reviews": "string"
+                    },
+                    "updated": false
+                  },
+                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]",
+                  "tableOptionValue": {
+                    "useFilter": false,
+                    "showPagination": false,
+                    "showAggregationFooter": false
+                  },
+                  "updated": false,
+                  "initialized": false
+                }
+              },
+              "commonSetting": {}
+            }
+          }
+        },
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "<p>\nDer Datensatz ermöglicht ebenfalls die Untersuchung der einzelnen Rezensenten. So lässt sich beispielsweise Zählen, wie viele Rezensionen unter welchem Nutzernamen stattgefunden haben. Dafür werden alle Reviews gruppiert nach dem Namen der Rezensenten gezählt und alle generischen Namen wie \"Amazon Customer\" gefiltert. Es muss bedacht werden, dass wie in Kapitel 1.1 festgestellt wurde, es mehrere Nutzer mit dem gleichen Namen geben kann. Die folgende Tabelle zeigt, dass unter dem Nutzernamen chris mit 1207 die meisten Rezensionen verfasst wurden\n</p>\n\n"
+          },
+          {
             "type": "TABLE",
             "data": "Nutzername\tAnzahl an Reviews\nchris\t1207\nmike\t1116\nmichael\t943\nalex\t900\njohn\t863\nlisa shea\t815\nn. durham\t795\nmatt\t738\njason\t677\nbrian\t669\n"
           }
@@ -1671,25 +2087,26 @@
       "apps": [],
       "runtimeInfos": {},
       "progressUpdateIntervalMs": 500,
-      "jobName": "paragraph_1681122693192_1705563964",
-      "id": "paragraph_1681122693192_1705563964",
-      "dateCreated": "2023-04-10T10:31:33+0000",
-      "dateStarted": "2023-04-10T14:27:34+0000",
-      "dateFinished": "2023-04-10T14:27:36+0000",
+      "jobName": "paragraph_1681562648466_1351756561",
+      "id": "paragraph_1681484741521_28058801",
+      "dateCreated": "2023-04-15T12:44:08+0000",
       "status": "FINISHED",
-      "$$hashKey": "object:199"
+      "$$hashKey": "object:5073",
+      "dateFinished": "2023-04-15T12:44:39+0000",
+      "dateStarted": "2023-04-15T12:44:37+0000"
     },
     {
       "title": "3.2 Rezensionen nach Name (sortiert nach Nutzeranzahl) ",
-      "text": "const collection = db.getCollection('video_games');\n\n\n//Frage: Wie viele Rezensionen wurden von Personen geschrieben, die den gleichen Namen haben?\n//UND wie viele eigentliche Personen (ids) haben den gleichen Namen dabei gehabt?\n//Auf den Namen in lower case gruppiert werden (Chris und chris sind gleich)\n//Die Anzahl der unique ReviewerIDs gezählt werden ($addToSet) damit nicht die reviews der gleichen person mitgezählt werden - Passiert das nicht hat man den \"count\" wert extrem unterscheidlich vom size wert\n//Das ganze projeziert werden auf die größe der Ids (\"size\")\n//und sortiert werden $sort\n\n//            $match: {verified: true}\nconst mostUsedUserName = collection.aggregate([\n        {\n            $match: {\n                reviewerName:  {$nin: ['Amazon Customer', 'Kindle Customer'] },\n            }\n        },\n        {\n         $group: {\n             _id: {$toLower: '$reviewerName'},\n             idsWithName: {$addToSet: \"$reviewerID\"},\n             count: { $count: {}}\n         }\n        },\n        {$project: {\n            \"count\": \"$count\",\n            \"size\": {\n                $size: '$idsWithName'\n            }\n        }\n        },\n        {\n            $sort: { \"size\": -1}\n        },\n        {\n          $limit: 10\n        }\n    ])\n    \nprint(\"%table Nutzername\\tAnzahl an Reviews\\tAnzahl an verschiedenen Benutzern\")\nmostUsedUserName.forEach((group) => {\n    print(group._id + '\\t' + group.count + '\\t'+ group.size)\n})",
+      "text": "%mongodb\n// Verwende die Collection video_games\nconst collection = db.getCollection('video_games');\n\n/**\n * Match: Extrahiere alle vorkommen generischer Amazon-Namen wie \"Amazon Customer\"\n * \n * Group: Gruppiere nach den Namen der Rezensenten (reviewerName) in lower case weil 'chris' und 'Chris' gleiche Namen sind\n * Zähle die Häufigkeit der einzelnen Rezensionen\n * \n * \n * Sort: Sortiere nach der Häufigkeit absteigend\n * \n * Limit: Limitiere auf die 10 häufigsten Namen\n * \n */\nconst mostUsedUserName = collection.aggregate([\n        {\n            $match: {\n                reviewerName:  {$nin: ['Amazon Customer', 'Kindle Customer'] },\n            }\n        },\n        {\n         $group: {\n             _id: {$toLower: '$reviewerName'}, \n             idsWithName: {$addToSet: \"$reviewerID\"},\n             count: { $count: {}}\n         }\n        },\n        {$project: {\n            \"count\": \"$count\",\n            \"size\": {\n                $size: '$idsWithName'\n            }\n        }\n        },\n        {\n            $sort: { \"size\": -1}\n        },\n        {\n          $limit: 5\n        }\n    ])\n    \nprint(`%html\n    <p>Aus Kapitel 3.1 kennen wir den Namen unter dem am häufigsten Rezensionen geschrieben wurden. Da jedoch mehrere Nutzer den gleichen Namen haben könnn, ist es interessant zu wissen, wie viele Benutzer den gleichen Namen verwenden. Dafür werden zu den gruppierten Namen ebenfalls alle Ids der individuellen Nutzer einmalig gezählt. Das folgende Balkendiagramm zeigt den am häufigsten verwendenten Nutzernamen von links nach rechts und die Gesamtanzahl der Rezensionen für den Nutzernamen. Es ist zu erkennen, dass hinter dem Nutzernamen 'chris' 132 verschiedenen Benutzern stecken und unter diesem die meisten Rezensionen (1207) verfasst wurden. Die Anzahl der Benutzer hinter einem Nutzernamen steht jedoch nicht zwingend in Relation mit der Anzahl der verfassten Rezensionen. So ist der Nutzername 'john' mit 117 Benutzern der am dritt häufigsten verwendete Nutzername. Unter diesem wurden mit 863 Rezensionen jedoch weniger Rezensionen verfasst als unter dem Nutzernamen 'michael' mit 943 Rezensionen und nur 99 Benutzern. \n    </p>\n`)\nprint(\"%table Nutzername\\tAnzahl an Reviews\\tAnzahl an verschiedenen Benutzern\")\nmostUsedUserName.forEach((group) => {\n    print(group._id + '\\t' + group.count + '\\t'+ group.size)\n})",
       "user": "anonymous",
-      "dateUpdated": "2023-04-10T14:49:32+0000",
+      "dateUpdated": "2023-04-15T12:44:39+0000",
       "progress": 0,
       "config": {
         "editorSetting": {
           "language": "javascript",
           "editOnDblClick": false,
-          "completionKey": "TAB"
+          "completionKey": "TAB",
+          "completionSupport": true
         },
         "colWidth": 4,
         "editorMode": "ace/mode/javascript",
@@ -1734,6 +2151,68 @@
                     "degree": "-45"
                   },
                   "xLabelStatus": "default"
+                },
+                "stackedAreaChart": {
+                  "rotate": {
+                    "degree": "-45"
+                  },
+                  "xLabelStatus": "default"
+                }
+              },
+              "commonSetting": {},
+              "keys": [
+                {
+                  "name": "Nutzername",
+                  "index": 0,
+                  "aggr": "sum"
+                }
+              ],
+              "groups": [],
+              "values": [
+                {
+                  "name": "Anzahl an Reviews",
+                  "index": 1,
+                  "aggr": "sum"
+                },
+                {
+                  "name": "Anzahl an verschiedenen Benutzern",
+                  "index": 2,
+                  "aggr": "sum"
+                }
+              ]
+            },
+            "helium": {}
+          },
+          "1": {
+            "graph": {
+              "mode": "multiBarChart",
+              "height": 300,
+              "optionOpen": false,
+              "setting": {
+                "table": {
+                  "tableGridState": {},
+                  "tableColumnTypeState": {
+                    "names": {
+                      "Nutzername": "string",
+                      "Anzahl an Reviews": "string",
+                      "Anzahl an verschiedenen Benutzern": "string"
+                    },
+                    "updated": false
+                  },
+                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]",
+                  "tableOptionValue": {
+                    "useFilter": false,
+                    "showPagination": false,
+                    "showAggregationFooter": false
+                  },
+                  "updated": false,
+                  "initialized": false
+                },
+                "multiBarChart": {
+                  "rotate": {
+                    "degree": "-45"
+                  },
+                  "xLabelStatus": "default"
                 }
               },
               "commonSetting": {},
@@ -1771,37 +2250,44 @@
         "code": "SUCCESS",
         "msg": [
           {
+            "type": "HTML",
+            "data": "    <p>Aus Kapitel 3.1 kennen wir den Namen unter dem am häufigsten Rezensionen geschrieben wurden. Da jedoch mehrere Nutzer den gleichen Namen haben könnn, ist es interessant zu wissen, wie viele Benutzer den gleichen Namen verwenden. Dafür werden zu den gruppierten Namen ebenfalls alle Ids der individuellen Nutzer einmalig gezählt. Das folgende Balkendiagramm zeigt den am häufigsten verwendenten Nutzernamen von links nach rechts und die Gesamtanzahl der Rezensionen für den Nutzernamen. Es ist zu erkennen, dass hinter dem Nutzernamen 'chris' 132 verschiedenen Benutzern stecken und unter diesem die meisten Rezensionen (1207) verfasst wurden. Die Anzahl der Benutzer hinter einem Nutzernamen steht jedoch nicht zwingend in Relation mit der Anzahl der verfassten Rezensionen. So ist der Nutzername 'john' mit 117 Benutzern der am dritt häufigsten verwendete Nutzername. Unter diesem wurden mit 863 Rezensionen jedoch weniger Rezensionen verfasst als unter dem Nutzernamen 'michael' mit 943 Rezensionen und nur 99 Benutzern. \n    </p>\n\n"
+          },
+          {
             "type": "TABLE",
-            "data": "Nutzername\tAnzahl an Reviews\tAnzahl an verschiedenen Benutzern\nchris\t1207\t132\njohn\t863\t117\nmike\t1116\t117\nmichael\t943\t99\nalex\t900\t93\nmatt\t738\t87\ndavid\t657\t79\njames\t619\t71\nkevin\t531\t67\nandrew\t480\t66\n"
+            "data": "Nutzername\tAnzahl an Reviews\tAnzahl an verschiedenen Benutzern\nchris\t1207\t132\nmike\t1116\t117\njohn\t863\t117\nmichael\t943\t99\nalex\t900\t93\n"
           }
         ]
       },
       "apps": [],
       "runtimeInfos": {},
       "progressUpdateIntervalMs": 500,
-      "jobName": "paragraph_1681131098196_1735373068",
+      "jobName": "paragraph_1681562648466_416726544",
       "id": "paragraph_1681131098196_1735373068",
-      "dateCreated": "2023-04-10T12:51:38+0000",
-      "dateStarted": "2023-04-10T14:30:27+0000",
-      "dateFinished": "2023-04-10T14:30:29+0000",
+      "dateCreated": "2023-04-15T12:44:08+0000",
       "status": "FINISHED",
-      "$$hashKey": "object:200"
+      "$$hashKey": "object:5074",
+      "dateFinished": "2023-04-15T12:44:42+0000",
+      "dateStarted": "2023-04-15T12:44:39+0000"
     },
     {
       "title": "3.3 Namensänderungen der Nutzer",
-      "text": "const collection = db.getCollection('video_games');\n// Wir können tracken, welcher nutzer wie oft seinen namen gewechselt hat\n// Wie viele Rezensionen wurden von der gleichen Person geschrieben?\n// UND welche Namen hatte diese Person in dafür verwendet?\nconst idsSorted = collection.aggregate([\n        {\n         $group: {\n             _id: '$reviewerID',\n             idsWithName: {$addToSet: {$toLower: \"$reviewerName\"}},\n             count: { $count: {}}\n         }\n        },\n        {$project: {\n            \"count\": \"$count\",\n            \"names\": \"$idsWithName\",\n            \"size\": {\n                $size: '$idsWithName'\n            }\n        }\n        },\n        {\n            $sort: { \"size\": -1}\n        },\n        {\n            $limit: 100\n        }\n    ])\n    \nprint(\"%table ID\\tNamen\\tAnzahl an Namensänderungen\")\nidsSorted.forEach((id) => {\n    print(id._id + '\\t' + id.names + '\\t' + id.size)\n})",
+      "text": "%mongodb\n// Verwende die Collection video_games\nconst collection = db.getCollection('video_games');\n/**\n * Group: Gruppiere nach Reviewer ID\n * Zähle die verwendenten Namen (reviewerName)\n */\nconst idsSorted = collection.aggregate([\n        {\n         $group: {\n             _id: '$reviewerID',\n             idsWithName: {$addToSet: {$toLower: \"$reviewerName\"}},\n         }\n        },\n        {$project: {\n            \"names\": \"$idsWithName\",\n            \"size\": {\n                $size: '$idsWithName'\n            }\n        }\n        },\n        {\n            $sort: { \"size\": -1}\n        },\n        {\n            $limit: 100\n        }\n    ])\n    \nprint(`%html\n<p>\nAnhand der gleichen Informationen lässt sich auch herausfinden, welcher Nutzer unter welchen Nutzernamen Rezensionen verfasst hat. Dafür werden alle Nutzernamen gezählt die gruppiert nach den einzelnen Benutzer-Ids vorkommen. Damit lässt sich ungefährt bestimmen, wie oft ein Benutzer seinen Namen geändert hat. Mit 11 verwendenten Nutzernamen hat der Rezensent mit der  Id 'AWG2O9C42XW5G' die häufigsten Namensänderungen durchgeführt. Auffällig an der Verwendung der Namen ist die Verwendung der Wörter \"oreo cookie\" und \"2018\" in seinem Namen.\n</p>\n`)\n    \nprint(\"%table ID\\tNamen\\tAnzahl an Namensänderungen\")\nidsSorted.forEach((id) => {\n    print(id._id + '\\t' + id.names + '\\t' + id.size)\n})",
       "user": "anonymous",
-      "dateUpdated": "2023-04-10T14:49:39+0000",
+      "dateUpdated": "2023-04-15T12:44:44+0000",
       "progress": 0,
       "config": {
         "editorSetting": {
           "language": "javascript",
           "editOnDblClick": false,
-          "completionKey": "TAB"
+          "completionKey": "TAB",
+          "completionSupport": true
         },
         "colWidth": 4,
         "editorMode": "ace/mode/javascript",
         "fontSize": 9,
+        "editorHide": true,
+        "title": true,
         "results": {
           "0": {
             "graph": {
@@ -1924,11 +2410,38 @@
               ]
             },
             "helium": {}
+          },
+          "1": {
+            "graph": {
+              "mode": "table",
+              "height": 400,
+              "optionOpen": false,
+              "setting": {
+                "table": {
+                  "tableGridState": {},
+                  "tableColumnTypeState": {
+                    "names": {
+                      "ID": "string",
+                      "Namen": "string",
+                      "Anzahl an Namensänderungen": "string"
+                    },
+                    "updated": false
+                  },
+                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]",
+                  "tableOptionValue": {
+                    "useFilter": false,
+                    "showPagination": false,
+                    "showAggregationFooter": false
+                  },
+                  "updated": false,
+                  "initialized": false
+                }
+              },
+              "commonSetting": {}
+            }
           }
         },
-        "enabled": true,
-        "editorHide": true,
-        "title": true
+        "enabled": true
       },
       "settings": {
         "params": {},
@@ -1938,26 +2451,30 @@
         "code": "SUCCESS",
         "msg": [
           {
+            "type": "HTML",
+            "data": "<p>\nAnhand der gleichen Informationen lässt sich auch herausfinden, welcher Nutzer unter welchen Nutzernamen Rezensionen verfasst hat. Dafür werden alle Nutzernamen gezählt die gruppiert nach den einzelnen Benutzer-Ids vorkommen. Damit lässt sich ungefährt bestimmen, wie oft ein Benutzer seinen Namen geändert hat. Mit 11 verwendenten Nutzernamen hat der Rezensent mit der  Id 'AWG2O9C42XW5G' die häufigsten Namensänderungen durchgeführt. Auffällig an der Verwendung der Namen ist die Verwendung der Wörter \"oreo cookie\" und \"2018\" in seinem Namen.\n</p>\n\n"
+          },
+          {
             "type": "TABLE",
-            "data": "ID\tNamen\tAnzahl an Namensänderungen\nAWG2O9C42XW5G\toreocokiemarshmallowkrispy 2018,oreo cookie hot and spicy cinnamon 2018, oreo cookie chocolate peanut butter pie 2018,oreo cookie limeade 2018,eli santana 2018,happy4thofjuly 2018,eric harris 2018,oreo cookie kettle corn 2018,blake meahl  2018,carl wierzbicky 2018,greg imhoff 2018\t11\nA2YSY26ZVMNNV2\tdickazius,arione,dicko\t3\nA2SPWNNXGLQ3FY\tb. logan,miss b,a. nonymous\t3\nA2BMCPMCZ1179Q\talexdeleon,alexdeleon338,aldalamar\t3\nA23MJLDET986F7\txionrose,nicolejasper,ashley\t3\nA109IF09XK3YNQ\ti had a big head as a baby,jeffy,world champion of mythical beasts\t3\nA1GIK0D2NVLMAM\tj. sipple,j. holmes,j. h. sipple\t3\nA7E31TXLE0IV5\tfran,francisco - customer reviewer,fran jau\t3\nA3O2H83DF1OEKG\tm_hicks,morals,myles\t3\nA54CXMDHKSQ4T\tredfield,daniel &amp; katie,daniel\t3\nA29BEQWCWCCUTI\tthegraybear,amazon customer,nytebear\t3\nA7TRXUEFCV420\tzahra hassan,zara,zahra\t3\nA1M1BDJBIS2KUJ\ta compulsive reader,kindle customer,compulsive reader\t3\nAW3K0NIFAR5XI\tjames,james waters,explicit707\t3\nA2WUHKA1I75SL3\tfrcp,wrx,funko\t3\nA2UEXA5EDWF0F4\tpiratelady,kindle customer,amazon customer\t3\nA1ZX8XU4OZ1OGD\teugene,logan\t2\nA3SMD3T0QTN109\tdf,dustin\t2\nAFYJVHCZ0MY87\te double dizzle from wisc-izzle,eric from wisconsin\t2\nA1B1XK9V78VV0P\tsteven d lewis,colleen l\t2\nA3VUPBU449TITU\tedwards,game galaxy\t2\nA9EESTY68GMM2\tmemememememe,paul pearce\t2\nA35LPKPYMZHJSV\tto,ininja\t2\nA15UMM3EKPKYVK\tdavid li,david\t2\nA3NWFSZTHOJ965\tamazon customer,mk\t2\nA269OEVY5AJ95G\tjeremie j. canty,darkly knighted\t2\nA35BFIFPA9T8QC\tasusena bustamante,sena b\t2\nA2JOGFGGL0MXZ6\tsusannah,nans\t2\nALGTR5GDKXWPJ\tk. williamson,ann w.\t2\nA2CMTNUHW3TND2\troberta giantess (ariarobbie),ariarobbie\t2\nA3ABZBL97YIRU9\trebecca valera,rebecca rodgers\t2\nAR9Y9SHFFA1ZP\tamazon customer,e k stackler\t2\nA2OIKXRM8LNNSH\tnikoli,niklaus\t2\nA18XUCXA3OGQFX\tmjk,michael kraay\t2\nA2KBP9YFLCMU2T\tpedro dos santos,tasmania\t2\nA2K8CAJ28XHMKE\tcorgizack,d. shane\t2\nA1E079MVIIMWOK\tnot a robot,simplymyopinion\t2\nAKA36GMIH72BN\tenticer,jonathan\t2\nA2WSPV9B4N6DF\thayden zinico marsh,star zinico marsh\t2\nA3EU4VMTF3XGFL\tj j,j\t2\nASY25YMTIC2A9\tgrace,stevie\t2\nA1URXETHTZHBSY\tboujee b,bwatson21718\t2\nA3HEVIMBVBKUJS\tgiovanni v,g\t2\nA1C20VH273TSC7\tother guy,emre h. ulkucu\t2\nA1WJSTVHXGT7B1\tthat guy,mauricio\t2\nA2WO6VNB6SN02U\tbrett and harmony,askingforafriend\t2\nAV29U1FWYMQEQ\tkindle customer,victor laserna\t2\nA1RS0N9O7WCWUN\tkiryudojima,le\t2\nA3AI2VN9692XSW\tcorey,corey wingate\t2\nA1F27ZJIFK9X5G\tkindle customer,lorestream\t2\nAAA8GRIJD7WVE\tjane blake,j. blake\t2\nA3TE0KXES4DCES\thp2,hari prasad pathi\t2\nA1ODOGXEYECQQ8\tnuk,reviewer\t2\nAN81JUYW2SL24\tdr. speed,lord otter\t2\nA3EVTUJOLEUON5\tj.hughes103,jocelyn hughes\t2\nA5ODF0BBJBTWR\tanubis,flint\t2\nA36LJUVJU1S1ZE\tseana essig,seana colwell\t2\nAQDAU8JEK6QC4\tlongum dong,s. whitaker\t2\nA1XUEOO3SEY281\tperoprimo,amazon customer\t2\nA27K56J3JXHRFH\tdaniel callahan,fluffy the gryphon\t2\nA4M1UO55C0REP\tfamily of five,rtg family (on youtube)\t2\nAARW3O4N2FC0F\tprison mike,amazon customer\t2\nA201HVME20DUW0\tqueen summerland,sneak\t2\nA6QMHYK4GISET\tcarolion,duane \t2\nA3U2XZBJCRTGOH\tmichael,michael tompkins\t2\nA1123IUDW2U5GH\ttlclan,tlc4all\t2\nAZR5TX11HS4AY\tjack arlington yancy,jack yancy\t2\nAHMLUEQJI0EJG\ti get bothered by names,mynameis jeff\t2\nA370Y39ZWZLACU\thahaha,amazon customer\t2\nA2S0Q7Z3Q9MN55\tcjdrinic,j. niccum\t2\nAC75ZFEVCMZC9\tcrayolaman,bige\t2\nA1GRHWTUWNQ5UO\tcrossbonev,michael\t2\nA24Y41V4MM6BTY\tbrock,brock balfour\t2\nA2FD3L8DUMM893\tkayla,k\t2\nAK31SHR8IZ548\tlamech,l dog\t2\nA2OVTFBLTDU4Z4\tsid,siddy\t2\nA3HV2DHJM9EFSM\ttaylor powers,taylor r. powers\t2\nA1MRE370W42RY2\tjikifreak,locke\t2\nA2UUPBQR4OSRCS\tamanisha jay,amanisha mead\t2\nAD5CRS6A3Z0J1\tkm_wondering,amazon customer\t2\nA365T7HKZHMA3P\tjase,jason\t2\nA3P8NVMIYY1OBZ\tboone&#039;s momma,angus&#039; momma\t2\nA31MQQXUCCJZ1E\tclayton anderson,mario\t2\nA3D5PX7B2WZRXL\tema nymton,louis friend\t2\nA2PCNX59G2GLIM\tspider-man,the man of tomorrow\t2\nA6D85D0RIF17J\ted,e\t2\nA3UU1QZT86JC16\ttcraft14,amazon customer\t2\nA3CVFQZ0PEEUK8\tlawraweltreich,gurianthe\t2\nA3V3E0I5USRJFT\tdennypooh,dennis\t2\nA268MR0LSLP3BY\treviewer,rudy lika\t2\nA2KKM9EKSDQMVU\tbig b,bajabarry\t2\nA1D82T9H3X8AB4\tware,r. ware\t2\nA2O2LDDGBCQCDC\tamazon customer,jason wendling\t2\nA2LR48WPRQ8URQ\tjorge valdes,---\t2\nA3DJQGVK748V09\ts. panchigar,r.lefleur\t2\nA3NORR9HMT5P6X\tkevin h.,null\t2\nA2H9EHAOJJFFC0\tmoargoldplz,danb2\t2\nA3E18T141X32BY\tlunchbox,david t. alexander\t2\nA2CY1DIG26KRXJ\tltmoe8,s m\t2\nA1U1NOFTXDFZ4Z\tpjs,pauls\t2\n"
+            "data": "ID\tNamen\tAnzahl an Namensänderungen\nAWG2O9C42XW5G\tblake meahl  2018,carl wierzbicky 2018,eli santana 2018,happy4thofjuly 2018,greg imhoff 2018,oreo cookie limeade 2018,oreocokiemarshmallowkrispy 2018, oreo cookie chocolate peanut butter pie 2018,eric harris 2018,oreo cookie kettle corn 2018,oreo cookie hot and spicy cinnamon 2018\t11\nA7E31TXLE0IV5\tfran jau,fran,francisco - customer reviewer\t3\nA3O2H83DF1OEKG\tmorals,myles,m_hicks\t3\nA23MJLDET986F7\txionrose,ashley,nicolejasper\t3\nA109IF09XK3YNQ\ti had a big head as a baby,world champion of mythical beasts,jeffy\t3\nA2SPWNNXGLQ3FY\tb. logan,a. nonymous,miss b\t3\nA2UEXA5EDWF0F4\tpiratelady,amazon customer,kindle customer\t3\nA1M1BDJBIS2KUJ\tkindle customer,compulsive reader,a compulsive reader\t3\nA7TRXUEFCV420\tzahra,zara,zahra hassan\t3\nAW3K0NIFAR5XI\tjames waters,james,explicit707\t3\nA1GIK0D2NVLMAM\tj. holmes,j. h. sipple,j. sipple\t3\nA29BEQWCWCCUTI\tnytebear,amazon customer,thegraybear\t3\nA2BMCPMCZ1179Q\taldalamar,alexdeleon338,alexdeleon\t3\nA2WUHKA1I75SL3\tfrcp,wrx,funko\t3\nA2YSY26ZVMNNV2\tdickazius,dicko,arione\t3\nA54CXMDHKSQ4T\tredfield,daniel,daniel &amp; katie\t3\nA3T5642FTN0MCX\tdove218,paranormalvideogamer\t2\nA32P3YOGFPXMD4\tc. hahnefeld,cab fam\t2\nA1E0U8PKZY9284\tron,ronald\t2\nA3E5C2WHQ77HM6\tkirk s.,amazon customer\t2\nA1W54XF7TPQ8SF\tdavid the wavid,david w cunnington\t2\nA1UMSB7LAW0RIR\tliltuscany,justmehere\t2\nA1W6IHFBKOF3TI\tjudges1050,joel ortiz\t2\nA3S1VOR12LIV6U\trobert burnham,rwburnham\t2\nA7NO77RSPHFE7\tsyrix,amazon customer\t2\nA3N1CLY81HGH0N\tniall noigiallach,pilgrim cooke\t2\nA22DVMVJT2JBP5\tlgrip,lgrip1\t2\nA141R97FHSSUQ0\tzenigma283,voldemortified\t2\nATNOSSGGVSDA8\tmatthew lavallee,matthew l\t2\nA3IMCFZ9MSXZ9T\tjustaguy,geek-patriot\t2\nA2I64LFRU3B991\tk-dogg,k-man\t2\nAHHPAWER4XFQC\tlasus naturae,amazon customer\t2\nAR9Y9SHFFA1ZP\te k stackler,amazon customer\t2\nA2ZKQ6V45YTT6F\tanon,ryan\t2\nA1IHG688XDFTKU\tkyuubikid213,carl\t2\nA141INO5311NA\tcosmic daiquiri,the strife of love in a dream\t2\nA1PH8FPFMWZGVG\tjoshua,dragonplumber\t2\nA1T7ZTCZ4XAX65\tmr finners,kb\t2\nA33AJOWOLR9EBW\tkassie,kassandra spears\t2\nA3GKEFY9J6J1O5\tanthony redfield,raphael auditore\t2\nA1WZN4ID35L6MP\tr. j. delaura,ronnie d\t2\nA1EMGUTTTGTGGW\tdemocroixion,noobs\t2\nA2PXMGU6V3QH10\tsocially awkward ,socal\t2\nA3AZ8P1IJGNI65\thello kitty,amazon customer\t2\nA35BFIFPA9T8QC\tasusena bustamante,sena b\t2\nA15UMM3EKPKYVK\tdavid,david li\t2\nA1BE4AD20FUEL8\tl. miller,l. m.\t2\nA208AI0YW9HTSY\twilliam f jr.,william fitch jr.\t2\nA3B6102VBD0XUO\tgerm the nobody,germaximus\t2\nA1FQLQ20ZRI4Q8\tmatt pc,matthew caban\t2\nA1CPC0X43EPIXD\thamazon gustomer,amazon customer\t2\nADLMAXGVALP4D\tantonio,macaronitony\t2\nA31MQQXUCCJZ1E\tmario,clayton anderson\t2\nAYGR1ZVHKUEY8\t#1,true review !\t2\nA20SEVQ6ZDT7WN\tbendy (ben and randy),randygk78\t2\nA1WCK3SODKHY5I\tniv,tonny\t2\nA131R47DKCHSA5\twilliam watson,bill on drums\t2\nA15IYMM0BXLBE3\tszookie,eileen szoke\t2\nA4JYA3Q5UMTG6\tvaaampiresluuut,transpineapple\t2\nA3OZ3PHKYV00CE\tamazon customer,amazonlover2k\t2\nA2RCZDP8KUUGQY\ttyler mistretta,vincent mistretta\t2\nA1HXOQPLBOTRLT\tmsashlynnpaige,amazon customer\t2\nA2LNS70LN9IRBN\tty pace,ty cheraso\t2\nA3QFRKNOF5UYOF\tcuroi,cam\t2\nA1U22JYCSJA0DS\td. vance,dustin v.\t2\nA14AE4SQNQY7UH\tgregory b,gregor slaughter \t2\nA18QL4VNZH7DJY\tjames mason,smokin crow\t2\nANEBIS4UOSZAY\theathyr,amazon customer\t2\nANDTY9DXK9Y4Z\tchicagofoodking ,frank.s\t2\nA1Q3MDPIS017JE\tcalyn,customer\t2\nA150925BGGPO6U\tj.t. melanson,justin t. melanson\t2\nAZW1ZHG0U771R\tred suns,raven_sword\t2\nA1D82T9H3X8AB4\tware,r. ware\t2\nA2R0EDGIX9V42X\tallen moss,sergeant rmj\t2\nAVVFPXB1BOC3H\tmay,meme\t2\nA1XECVJAW1EWYM\tcrybaby2,gutsy2\t2\nA24Y41V4MM6BTY\tbrock balfour,brock\t2\nA3GG2VXX9RURMW\tneo,yichong\t2\nA5ODF0BBJBTWR\tanubis,flint\t2\nA36VDYQ1D99ASX\telizabeth,caleb and elizabeth\t2\nA1B7MH0MB7GJ7O\txarkslade08x,xarkslade28x\t2\nAW7CIDUOZLIVJ\tryan4porsche,ryan\t2\nA3ALGU79X7JDTW\tdawn m. jackson,dmj\t2\nA4ETVSMZRZZHZ\tamazon customer,billy davis mazon prime member\t2\nA3RF5CX7X0WAAI\ttrevor philips,trevor philips \t2\nA31LEVBRCI0BQX\tbeth ann,linda\t2\nA39KGML5OYIU00\ttwo loves,t. r. love\t2\nACF84NI8Y6IW4\tpaul larson,viking\t2\nA2MQRN779ZJXKV\tnavakid productions,mexiking\t2\nA1RL1OTV8IJMVD\twilliam grose,william g.\t2\nA379DLIAF0MFM5\tmr. deeds,tom d.\t2\nA7FH7LXXLFLI7\t / king mecha sigma, / papaya sigma\t2\nA3TK5AMWTH2OJ\tnelson letelier,nelson l.\t2\nA1KRQ594KWLRSZ\tbonnie &amp; family,bonnie warfield\t2\nAM3W8N7L2AWFF\tkindle customer,m. keating\t2\nA3MV06M0EE4KSI\trattus rattus,ian\t2\nA1NEWZXKP6JXU9\tnostradogus,kindle customer\t2\nA3TH0CZ91A8LP0\tme,jackie allen\t2\nAUN2L9ZRJCLIQ\tdigital.maverick,tldr\t2\nA1F258R996QGIC\tbelinda,bf\t2\n"
           }
         ]
       },
       "apps": [],
       "runtimeInfos": {},
       "progressUpdateIntervalMs": 500,
-      "jobName": "paragraph_1681064947058_1950698310",
+      "jobName": "paragraph_1681562648466_2146317121",
       "id": "paragraph_1681064947058_1950698310",
-      "dateCreated": "2023-04-09T18:29:07+0000",
-      "dateStarted": "2023-04-10T14:33:57+0000",
-      "dateFinished": "2023-04-10T14:33:59+0000",
+      "dateCreated": "2023-04-15T12:44:08+0000",
       "status": "FINISHED",
-      "$$hashKey": "object:201"
+      "$$hashKey": "object:5075",
+      "dateFinished": "2023-04-15T12:44:44+0000",
+      "dateStarted": "2023-04-15T12:44:42+0000"
     }
   ],
   "name": "Datenanalyse: Amazon Video Games - Joel Staubach",
-  "id": "2HYJAU5RB",
-  "defaultInterpreterGroup": "mongodb",
+  "id": "2HX8NE8DV",
+  "defaultInterpreterGroup": "spark",
   "version": "0.10.1",
   "noteParams": {},
   "noteForms": {},

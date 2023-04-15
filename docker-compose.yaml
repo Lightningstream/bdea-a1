@@ -10,13 +10,21 @@ services:
     environment:
       MONGO_INITDB_ROOT_USERNAME: root
       MONGO_INITDB_ROOT_PASSWORD: example
+    networks:
+      - zeppelin-network
     ports:
       - 27017:27017
   zeppelin:
     image: mongo-zeppelin
     container_name: bdea-mongo-zeppelin
+    networks:
+      - zeppelin-network
     ports:
       - 8090:8080
     build: 
       context: ./
+
+networks:
+  zeppelin-network:
+    driver: bridge
 
